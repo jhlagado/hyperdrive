@@ -1,0 +1,335 @@
+HYPERDRIVE (hyperdrive.bas) - High-Level Pseudocode (Visual Basic style)
+
+Notes
+  - This is a readable outline of the game flow, not a line-by-line translation.
+  - Variables keep the original names where possible (A, P(), C(), etc.).
+  - Arrays:
+      P(1..24)  -> object locations (-1 = carrying, 0 = destroyed, else room id)
+      C(1..54,1..4) -> room exits (N,S,W,E) or special codes (128+ = hazards)
+
+
+Main
+  ClearScreen
+  ResetClock TI$
+  FU = 0        'flag for fuel/door logic
+  J = 0         'tracks docking bay visit
+  Call ShowTitle()
+  R = 0         'reprint room description flag
+  A = 1         'current room id
+  CAN = 1       'oxygen available
+  MAT = 1       'match lit
+  Call LoadData()
+  If AskInstructions() Then Call ShowInstructions()
+
+  Do
+    F = 0
+    U = 0       'move counter
+    If R = 0 Then
+      Call DescribeRoom(A)
+      Call ListVisibleItems(A)
+      Call ListNearbyMonsters(A)
+      R = 1
+    End If
+
+    If A <> 50 Or P(11) <> 50 Then DisableSonic()
+    Print "OK...WHAT NOW?"
+    Call ReadCommand(N1, N2)
+
+    Call NormalizeVerb(N1)
+    If N1 < 1 Then
+      Print "I DON'T UNDERSTAND THAT!"
+      Continue Do
+    End If
+
+    Call UpdateDynamicState(A)
+
+    If IsVerbDisallowed(N1) Then
+      Print "HOW?"
+      Continue Do
+    End If
+
+    If N1 in {LOOK, LIST, QUIT} Then
+      Call HandleUtilityVerb(N1)
+      Continue Do
+    End If
+
+    Call CheckMonsters(A, N1)
+
+    If N1 in {NORTH, SOUTH, WEST, EAST} Then
+      Call HandleMovement(A, N1)
+      Continue Do
+    End If
+
+    If N1 = TRANSMAT Then
+      Call HandleTransmat(A)
+      Continue Do
+    End If
+
+    If N1 = APE Then
+      'placeholder, nothing happens
+      Continue Do
+    End If
+
+    If N2 < 1 Then
+      Print "I DON'T UNDERSTAND THAT!"
+      Continue Do
+    End If
+
+    Call HandleObjectVerb(N1, N2, A)
+  Loop
+
+
+Sub LoadData()
+  Read item names list
+  Read initial object locations into P()
+  Read room exits into C()
+End Sub
+
+
+Sub ShowTitle()
+  SetSoundAndScreen
+  Print "HYPERDRIVE"
+  Print "BY KEN STONE AND JOHN HARDY"
+End Sub
+
+
+Function AskInstructions() As Boolean
+  Print "INSTRUCTIONS? Y/N"
+  Input Y$
+  Return (Left(Y$,1) = "Y")
+End Function
+
+
+Sub ShowInstructions()
+  Print story setup and sample commands
+End Sub
+
+
+Sub DescribeRoom(roomId)
+  If CanBreathe(roomId) = False Then
+    Print "YOU CANT BREATHE!! THE AIR IS POISONED BY FUMES."
+    GoTo GameOver
+  End If
+
+  G$ = BuildRoomDescription(roomId)
+  PrintWrapped(G$)
+
+  If roomId = 47 Then Call EchoRoom()
+  If roomId = 10 And C(roomId,1)=0 Then Print "IT IS TOO DAMAGED TO CLIMB"
+  If roomId = 12 And C(roomId,1)=0 Then Print "THE LADDER HAS BROKEN FREE AND COLLAPSED."
+
+  If U > 200 Then Print "YOUR OXYGEN IS RUNNING OUT."
+  If U >= 230 Then
+    CAN = 0
+    Print "IN FACT YOU HAVE RUN OUT!"
+  End If
+End Sub
+
+
+Sub ListVisibleItems(roomId)
+  If AnyObjectsAt(roomId, 7, 24) Then
+    Print "YOU CAN ALSO SEE:"
+    For each item in 7..24
+      If P(item) = roomId Then Call PrintItemName(item)
+    Next
+  End If
+End Sub
+
+
+Sub ListNearbyMonsters(roomId)
+  If AnyObjectsAt(roomId, 1, 6) Then
+    Print
+    Print "NEARBY THERE LURKS"
+    For each monster in 1..6
+      If P(monster) = roomId Then Call PrintItemName(monster)
+    Next
+  End If
+End Sub
+
+
+Sub ReadCommand(ByRef N1, ByRef N2)
+  Input A$
+  A$ = A$ + "         "  'padding
+  U = U + 1             'move counter
+
+  'Parse up to two words using the command table.
+  N1 = ParseFirstWord(A$)
+  N2 = ParseSecondWord(A$)
+End Sub
+
+
+Sub NormalizeVerb(ByRef N1)
+  'Map synonyms and special ranges to a small set of actions.
+  If N1 = 13 Or N1 = 14 Then N1 = 12
+  If N1 = 27 Then N1 = 10
+  If N1 = 26 Then Call ReadActionAndReturn()
+  If N1 = 15 Then N1 = 16
+  If N1 > 27 Then N1 = N1 - 27
+End Sub
+
+
+Sub UpdateDynamicState(roomId)
+  If roomId = 11 Then C(10,1) = 0 : C(12,1) = 0
+  If roomId = 2 Then J = 1
+  If roomId = 50 Then C(22,1) = 53 : C(45,1) = 31
+  If P(24) <> 17 Then FU = 1
+  If FU = 1 And P(24) = 17 Then C(17,4) = 12
+  If roomId = 49 Then C(48,4) = 49
+End Sub
+
+
+Sub HandleUtilityVerb(verbId)
+  Select Case verbId
+    Case LOOK
+      R = 0
+    Case LIST
+      PrintInventory()
+    Case QUIT
+      GoTo GameOver
+  End Select
+End Sub
+
+
+Sub CheckMonsters(roomId, verbId)
+  'If a monster is present, most actions kill you.
+  If AnyMonstersAt(roomId) And verbId <> USE Then
+    If MonsterIsDrone(roomId) Then
+      Print "THE RUSTY DRONE PICKED YOU UP AND CARRIED YOU TO ANOTHER PLACE."
+      A = 33
+      R = 0
+    Else
+      Print "AUUUUGH...YOU'VE JUST BEEN KILLED BY A " & MonsterName()
+      GoTo GameOver
+    End If
+  End If
+End Sub
+
+
+Sub HandleMovement(ByRef roomId, directionId)
+  If P(8) = -1 Or P(8) = roomId Then
+    directionId = RandomDirection()
+  End If
+
+  nextRoom = C(roomId, directionId)
+  If nextRoom = 0 Then
+    Print "YOU CANT GO THAT WAY."
+  ElseIf nextRoom >= 128 Then
+    PrintHazardMessage(nextRoom)
+    GoTo GameOver
+  Else
+    roomId = nextRoom
+    R = 0
+  End If
+End Sub
+
+
+Sub HandleTransmat(roomId)
+  If roomId = 16 And P(17) = -1 Then
+    A = 16
+    Print "SUDDENLY.. THE ROOM VANISHES FROM BEFORE YOU."
+    Wait
+    R = 0
+    Exit Sub
+  End If
+
+  Print "ENTER DESTINATION CODE"
+  Input CO$
+  Select Case Left$(CO$,1)
+    Case "Y": A = 1
+    Case "B": A = 31
+    Case "C": A = 41
+  End Select
+  Print "SUDDENLY.. THE ROOM VANISHES FROM BEFORE YOU."
+  Wait
+  R = 0
+End Sub
+
+
+Sub HandleObjectVerb(verbId, objectId, roomId)
+  If P(objectId) <> -1 And P(objectId) <> roomId Then
+    Print "WHERE? I CAN'T SEE IT."
+    Exit Sub
+  End If
+
+  Select Case verbId
+    Case TAKE
+      If CarryingCount() >= 11 Then
+        Print "YOU ARE CARRYING TOO MANY OBJECTS."
+      Else
+        P(objectId) = -1
+      End If
+    Case DROP
+      P(objectId) = roomId
+    Case USE
+      Call UseItem(objectId, roomId)
+    Case Else
+      Print "NOTHING HAPPENS!"
+  End Select
+End Sub
+
+
+Sub UseItem(objectId, roomId)
+  Select Case objectId
+    Case 18  'door
+      If roomId = 2 Or roomId = 27 Then
+        Print "YOU OPENED THE DOOR."
+        P(objectId) = roomId
+        If roomId = 2 Then A = 1
+        If roomId = 27 Then A = 54
+      Else
+        Print "IT WON'T OPEN"
+      End If
+    Case 19  'blaster vs monsters
+      Call CombatLogic(roomId)
+    Case 21  'matches + fuse
+      Call FuseExplosion(roomId)
+    Case 23  'rope
+      If roomId = 28 Then
+        Print "YOU DESCEND THE ROPE..."
+        P(objectId) = roomId
+        A = 27
+      Else
+        Print "IT'S TOO DANGEROUS!!!"
+      End If
+    Case Else
+      Print "NOTHING HAPPENS!"
+  End Select
+End Sub
+
+
+Sub CombatLogic(roomId)
+  'Randomized hit/miss logic. On success, monster flees or is removed.
+  'On failure, player dies.
+End Sub
+
+
+Sub FuseExplosion(roomId)
+  If P(9) <> -1 And P(9) <> roomId Then
+    Print "THAT WON'T BURN, DUMMY!! IN FACT, THE MATCH WENT OUT."
+    MAT = 0
+    Exit Sub
+  End If
+  If MAT = 0 Then
+    Print "BUT THE MATCH IS OUT, STUPID!!"
+    Exit Sub
+  End If
+
+  Print "THE FUSE BURNT AWAY AND...BOOM!!"
+  If roomId = 2 Then C(roomId,2) = 1
+  If roomId = 51 Then C(roomId,1) = 130
+  If roomId > 1 Then A = roomId - 1
+  If roomId = 20 Then C(20,3) = 19
+  P(9) = 0
+  R = 0
+End Sub
+
+
+GameOver:
+  S = ComputeScore()
+  Print "YOU GOT A SCORE OF " & S
+  Print "IN " & U & " MOVES."
+  Call EndingByScore(S, A, J)
+  If AskPlayAgain() Then GoTo Main
+  Print "YOU HAVE BEEN PLAYING HYPERDRIVE FOR ..."
+  End
+
