@@ -8,8 +8,8 @@ and John Hardy had done together. That work began as a fantasy adventure called
 `Caverns` on a Sinclair ZX81 with a 16K RAM expansion, then was ported
 to the VIC-20 with a 16K expansion cartridge. 
 
-`Hyperdrive` followed as a new science-fiction game, reusing ideas and structures
-from that earlier codebase. Ken Stone advanced the work with new concepts and
+`Hyperdrive` followed as a new science-fiction game, expanding on the ideas and
+structures from that earlier codebase. Ken Stone advanced the work with new concepts and
 systems that fit a spacefaring setting, bringing science-fiction themes into an
 interactive fiction program. It built on what came before, but introduced a
 different approach shaped by the sci-fi tone rather than the high-fantasy feel
