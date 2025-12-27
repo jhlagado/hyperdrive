@@ -1,56 +1,62 @@
 # Hyperdrive: The Lost 1982 Text Adventure
 
-## Introduction
+## A Lost Game, Recovered
 
-This repository preserves a science-fiction text adventure titled "Hyperdrive."
-It was originally written in 1982 by Ken Stone, building on earlier work he
-and John Hardy had done together. That work began as a fantasy adventure called
-`Caverns` on a Sinclair ZX81 with a 16K RAM expansion, then was ported
-to the VIC-20 with a 16K expansion cartridge. 
+For years, the VIC-20 game *Hyperdrive* survived only as a rumor and a damaged
+cassette. It was written in 1982 by Ken Stone, building on earlier work he and
+John Hardy created together. That earlier project began on a Sinclair ZX81 as a
+fantasy adventure called `Caverns`, then grew into something larger when it was
+ported to the VIC-20 with a 16K expansion cartridge.
 
-`Hyperdrive` followed as a new science-fiction game, expanding on the ideas and
-structures from that earlier codebase. Ken Stone advanced the work with new concepts and
-systems that fit a spacefaring setting, bringing science-fiction themes into an
-interactive fiction program. It built on what came before, but introduced a
-different approach shaped by the sci-fi tone rather than the high-fantasy feel
-of the earlier game.
+*Hyperdrive* took the ideas that came before and pushed them into science
+fiction. It traded dragons and dungeons for derelict starships and uncertain
+technology. The tone is different, but the same DNA is there: curiosity,
+exploration, and the slow accumulation of knowledge that lets you survive just
+one more move.
 
-For decades the program was considered lost. The only surviving copy lived on
-an aging, damaged cassette tape. Sometime around 2019, the tape was transferred to a WAV
-file, and that audio capture became the sole surviving artifact. Through a
-careful recovery process, John Hardy reconstructed the original BASIC listing
-with what appears to be 100% fidelity to the 1982 program.
+Typical of text adventures of the time, it also carries a few frustrating
+quirks. That is part of its character. It is a game from a moment when players
+were expected to map the world by hand and live with the consequences of a bad
+guess.
 
-## What the game is about?
+The only surviving copy lived on an aging tape. Around 2019 that tape was
+transferred to a WAV file, and from that capture the original BASIC listing was
+recovered with what appears to be complete fidelity to the 1982 program.
+
+## What the Game Feels Like
 
 You are the pilot of a small space yacht damaged in a freak accident. You dock
 with a massive derelict cruiser to find what you need to survive and get home.
-The wreck is moody and dangerous: dim corridors, cracked observation ports,
-strange machinery, and unsettling signs of long-abandoned systems. Tension
-builds as you navigate unfamiliar passages, manage dwindling resources, and
-piece together what happened aboard.
+The ship is cold, dim, and silent. Its corridors are cracked, its machinery is
+half alive, and its air is not always safe to breathe. Every room description
+feels like a clue and a warning at once.
 
-Think of it as a classic 1980s sci-fi adventure: exploration-first, terse
-commands, and a slow-burn atmosphere where every room description hints at
-history you can’t quite see. The joy is in mapping the cruiser, learning its
-rules, and uncovering just enough to make your next safe move.
-Typical of text adventures of the time, it had some frustrating quirks!
+The joy is in discovery: charting the ship, learning its rules, and keeping
+calm while the game tests your patience and your nerve.
 
-This repo contains:
+## What You Will Find Here
+
+This repository keeps the original program and its recovery artifacts together
+so the full story remains intact:
 
 - `src/hyperdrive.bas`: the restored BASIC source listing
-- `src/hyperdrive.wav`: the recovered cassette transfer
+- `src/hyperdrive.wav`: the original cassette capture
+- `src/hyperdrive.tap`: pulse-accurate tape data derived from the WAV
+- `src/hyperdrive.prg`: the reconstructed VIC-20 program file
 
-The goal here is preservation: keep the recovered source and audio together so
-the story of Hyperdrive remains complete.
+Supporting material and notes:
 
-## Addendum
+- `docs/recovery-notes.md`: the technical narrative of the recovery process
+- `docs/peek-poke-notes.md`: VIC-20 hardware notes used by the game
+- `recovery/`: scripts and intermediate outputs used during reconstruction
+
+## A Small Addendum
 
 Later, John Hardy wrote a sequel titled `Hyperdrive II` for the Australian
-Microbee computer. It is its own game, but it echoes some of the themes
-established by the original VIC-20 `Hyperdrive`.
+Microbee computer. It is its own game, but it echoes some of the atmosphere and
+themes established by the original VIC-20 *Hyperdrive*.
 
-![Original Talking Electronics Issue 8 ad for Hyperdrive and Caverns (1982).](vic20-versions-te-8.png)
+![Original Talking Electronics Issue 8 ad for Hyperdrive and Caverns (1982).](assets/vic20-versions-te-8.png)
 
 Original ad for Hyperdrive and Caverns, from Talking Electronics Issue 8
 (published in 1982).
