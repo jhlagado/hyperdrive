@@ -55,7 +55,7 @@ Later, John Hardy wrote a sequel titled `Hyperdrive II` for the Australian
 Microbee computer. It is its own game, but it echoes some of the atmosphere and
 themes established by the original VIC-20 *Hyperdrive*.
 
-![Original Talking Electronics Issue 8 ad for Hyperdrive and Caverns (1982).](assets/vic20-versions-te-8.png)
+![Original Talking Electronics Issue 8 ad for Hyperdrive and Caverns (1982).](assets/vic20-versions-te-8.jpg)
 
 Original ad for Hyperdrive and Caverns, from Talking Electronics Issue 8
 (published in 1982).
