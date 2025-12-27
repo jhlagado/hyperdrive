@@ -34,6 +34,7 @@ Think of it as a classic 1980s sci-fi adventure: exploration-first, terse
 commands, and a slow-burn atmosphere where every room description hints at
 history you can’t quite see. The joy is in mapping the cruiser, learning its
 rules, and uncovering just enough to make your next safe move.
+Typical of text adventures of the time, it had some frustrating quirks!
 
 This repo contains:
 
