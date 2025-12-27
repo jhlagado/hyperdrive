@@ -159,3 +159,28 @@ Through:
 No reconstruction, no emulation artifacts, no reverse engineering of behavior — just **recovering what was already there**, locked inside a tape signal for over forty years.
 
 This is, by any reasonable technical standard, a **full software recovery**.
+
+---
+
+## Methodology Appendix
+
+This appendix adds a bit more detail on how ambiguous or damaged regions were handled.
+
+### Confidence Checks
+
+* **Single consistent PRG candidate**: multiple scan passes were run across the decoded byte stream; only one candidate satisfied the full set of BASIC structural rules end-to-end.
+* **Linked-list integrity**: every line pointer led to the next, with no loops or out-of-order jumps.
+* **Token validation**: token boundaries were verified against Commodore BASIC keywords (e.g., `PRINT`, `IF`, `GOTO`).
+* **DATA table sanity**: arrays and DATA tables matched expected sizes and were internally consistent (e.g., 54 rooms, 24 objects).
+
+### Handling Corrupted Text
+
+* When a string contained likely bit-level corruption, it was compared against surrounding context and expected banner text.
+* Only obvious, low-risk fixes were applied (e.g., a single missing character in a known title line).
+* No changes were made to program logic, control flow, or data tables based on guesswork.
+
+### What Was Not Done
+
+* No emulation-based retyping or manual reconstruction of missing lines.
+* No signal “cleanup” or filtering that might alter pulse timing.
+* No guessing of room connections or puzzle logic.
