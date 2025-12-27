@@ -46,9 +46,8 @@ so the full story remains intact:
 
 Supporting material and notes:
 
-- `docs/recovery-notes.md`: the technical narrative of the recovery process
-- `docs/peek-poke-notes.md`: VIC-20 hardware notes used by the game
-- `recovery/`: scripts and intermediate outputs used during reconstruction
+- [docs/recovery-notes.md](docs/recovery-notes.md): the technical narrative of the recovery process
+- [docs/peek-poke-notes.md](docs/peek-poke-notes.md): VIC-20 hardware notes used by the game
 
 ## A Small Addendum
 
