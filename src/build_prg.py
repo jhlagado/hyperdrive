@@ -31,10 +31,15 @@ def patch_prg_strings(prg_path: Path) -> None:
         idx += 2  # next line pointer
         idx += 2  # line number
         in_str = False
+        in_data = False
         while idx < len(blob) and blob[idx] != 0:
             b = blob[idx]
+            if not in_str and b == 0x83:
+                in_data = True  # DATA token in BASIC 2.0
             if b == 0x22:
                 in_str = not in_str
+            elif in_data and 193 <= b <= 218:
+                blob[idx] = b - 128
             elif in_str and 193 <= b <= 218:
                 blob[idx] = b - 128
             idx += 1
@@ -61,12 +66,15 @@ def main() -> int:
         prg = src.with_suffix(".prg")
 
     tmp = src.with_suffix(".temp.bas")
+    pet = src.with_suffix(".pet.bas")
 
     if not src.exists():
         print(f"Missing source: {src}", file=sys.stderr)
         return 1
 
-    tmp.write_text(lower_keywords_keep_strings(src.read_text()))
+    tmp_text = lower_keywords_keep_strings(src.read_text())
+    tmp.write_text(tmp_text)
+    pet.write_text(tmp_text)
 
     try:
         subprocess.run(

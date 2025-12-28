@@ -1,4 +1,3 @@
-1 end
 2 rem vic-20 input test
 10 print "TYPE LOOK"
 20 input a$
