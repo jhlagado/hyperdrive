@@ -1,9 +1,9 @@
-1 rem copy right micro parts, 1982
+1 end: rem copy right micro parts, 1982
 2 print chr$(14): rem dist 10
 3 clr
 4 ti$ = "000000"
 5 fu = 0
-6 j = 0
+6 j = 0: dbg = 1
 7 gosub 419
 8 x = rnd( - ti)
 9 r = 0
@@ -144,7 +144,7 @@
 144 if a$ = "e" then n(1) = 4: goto 175
 145 if a$ = "up" then n(1) = 1: goto 175
 146 if a$ = "down" then n(1) = 1: goto 175
-147 a$ = a$ + " "
+147 a$ = a$ + " ": gosub 910
 148 rem n(1) = 0
 149 rem n(2) = 0
 150 print: print: print
@@ -155,9 +155,9 @@
 155 m = m + 1
 156 restore
 157 for x = 1 to 55
-158 read n$
+158 read n$: if x = 25 or x = 31 then gosub 920
 159 if m + len(n$) > len(a$) then 171
-160 if mid$(a$, m, len(n$)) = n$ then 163
+160 if mid$(a$, m, len(n$)) = n$ then gosub 920: goto 163
 161 next x
 162 goto 155
 163 n(t) = x
@@ -492,3 +492,11 @@
 903 if o > 64 and o < 91 then a$ = left$(a$, q - 1) + chr$(o + 32) + mid$(a$, q + 1)
 904 if o > 192 and o < 219 then a$ = left$(a$, q - 1) + chr$(o - 96) + mid$(a$, q + 1)
 905 q = q + 1: goto 901
+910 if dbg <> 1 then return
+911 print "ÄÂÇ Á$="; a$
+912 for dq = 1 to len(a$): print asc(mid$(a$, dq, 1)); : next dq
+913 print: return
+920 if dbg <> 1 then return
+921 print "ÄÂÇ Î$="; n$
+922 for dq = 1 to len(n$): print asc(mid$(n$, dq, 1)); : next dq
+923 print: return

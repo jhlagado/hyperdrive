@@ -157,7 +157,7 @@
 157 for x = 1 to 55
 158 read n$: if x = 25 or x = 31 then gosub 920
 159 if m + len(n$) > len(a$) then 171
-160 if mid$(a$, m, len(n$)) = n$ then 163
+160 if mid$(a$, m, len(n$)) = n$ then gosub 920: goto 163
 161 next x
 162 goto 155
 163 n(t) = x
