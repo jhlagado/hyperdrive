@@ -8,7 +8,7 @@ from pathlib import Path
 def to_petscii_byte(ch: str) -> int:
     o = ord(ch)
     if 65 <= o <= 90:
-        return o + 128
+        return o
     if 97 <= o <= 122:
         return o
     return o

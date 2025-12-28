@@ -3,7 +3,7 @@
 3 clr
 4 ti$ = "000000"
 5 fu = 0
-6 j = 0: dbg = 1
+6 j = 0
 7 gosub 419
 8 x = rnd( - ti)
 9 r = 0
@@ -19,7 +19,7 @@
 19 f = 0
 20 u = 0
 21 if r = 1 then 136
-22 if a < 18 or can = 1 and (p(21) = a or p(21) = - 1) then 25
+22 if a < 18 or can = 1 and (p(21) = a or p(21) = -1) then 25
 23 print "You cant breathe!! The air is poisoned by fumes."
 24 goto 136
 25 rem print a
@@ -144,7 +144,7 @@
 144 if a$ = "e" then n(1) = 4: goto 175
 145 if a$ = "up" then n(1) = 1: goto 175
 146 if a$ = "down" then n(1) = 1: goto 175
-147 a$ = a$ + " ": gosub 910
+147 a$ = a$ + " "
 148 rem n(1) = 0
 149 rem n(2) = 0
 150 print: print: print
@@ -153,11 +153,12 @@
 153 t = 1
 154 m = 0
 155 m = m + 1
+155 if m > len(a$) then 171
 156 restore
 157 for x = 1 to 55
-158 read n$: if x = 25 or x = 31 then gosub 920
-159 if m + len(n$) > len(a$) then 171
-160 if mid$(a$, m, len(n$)) = n$ then gosub 920: goto 163
+158 read n$
+159 if m + len(n$) > len(a$) then 161
+160 if mid$(a$, m, len(n$)) = n$ then 163
 161 next x
 162 goto 155
 163 n(t) = x
@@ -200,11 +201,11 @@
 200 print "You are carrying "
 201 v = 0
 202 for l = 7 to 24
-203 if p(l) = - 1 then v = v + 1
+203 if p(l) = -1 then v = v + 1
 204 next l
 205 if v = 0 then print "Nothing." : goto 209
 206 for l = 7 to 24
-207 if p(l) = - 1 then gosub 425
+207 if p(l) = -1 then gosub 425
 208 next l
 209 goto 21
 210 goto 335
@@ -226,7 +227,7 @@
 226 p(5) = p(5) + 7
 227 goto 21
 228 if n(1) > 4 then 242
-229 if p(8) = - 1 or p(8) = a then 232
+229 if p(8) = -1 or p(8) = a then 232
 230 n(1) = int(rnd(1) * 4 + 1)
 231 rem
 232 b = c(a, n(1))
@@ -242,7 +243,7 @@
 242 if n(1) <> 5 then 257
 243 if n(1) <> 5 then 257
 244 r = 0
-245 if a = 16 and p(17) = - 1 then 250
+245 if a = 16 and p(17) = -1 then 250
 246 a = 16
 247 print "Suddenly.. The room vanishes from before you."
 248 for de = 1 to 1000: next de
@@ -258,18 +259,18 @@
 258 rem
 259 goto 21
 260 if n(2) < 1 then 172
-261 if p(n(2)) = - 1 or p(n(2)) = a then 264
+261 if p(n(2)) = -1 or p(n(2)) = a then 264
 262 print "Where? I can't see it."
 263 goto 21
 264 on n(1) - 9 goto 265, 274, 276
 265 n = 1
 266 for x = 1 to 24
-267 if p(x) = - 1 then n = n + 1
+267 if p(x) = -1 then n = n + 1
 268 next x
 269 if n < 12 then 272
 270 print "You are carrying too many objects."
 271 goto 21
-272 p(n(2)) = - 1
+272 p(n(2)) = -1
 273 goto 136
 274 p(n(2)) = a
 275 goto 136
@@ -304,11 +305,11 @@
 304 if l = 3 then print "Alarms you."
 305 goto 21
 306 print "The shot is well aimed and the machine scuttles away, badly damaged."
-307 p(n(2)) = - 1
+307 p(n(2)) = -1
 308 if z = 3 or z = 5 then p(z) = p(z) + 10
 309 if p(z) = a then p(z) = 0
 310 goto 21
-311 if p(9) = - 1 or p(9) = a then 315
+311 if p(9) = -1 or p(9) = a then 315
 312 print "That won't burn, dummy!! In fact, the match went out."
 313 mat = 0
 314 goto 21
@@ -334,7 +335,7 @@
 334 goto 21
 335 s = 0
 336 for x = 7 to 17
-337 if p(x) = - 1 then s = s + x - 6
+337 if p(x) = -1 then s = s + x - 6
 338 if p(x) = 1 then s = s + (x - 6) * 2
 339 next x
 340 print: print: print: print
@@ -351,12 +352,12 @@
 352 if s < 80 then print "The yacht begins to move forward, then suddenly the drive "
 353 if s < 80 then print "Overloads and explodes blowing you into cosmic dust"
 354 poke 36878, 15
-355 for x = 255 to 128 step - 1
+355 for x = 255 to 128 step -1
 356 poke 36877, x
 357 for de = 1 to 20: next de
 358 poke 36874, x
 359 next x
-360 for x = 15 to 0 step - 1 : for y = 1 to 20: next y: poke 36878, x: next x
+360 for x = 15 to 0 step -1 : for y = 1 to 20: next y: poke 36878, x: next x
 361 goto 372
 362 if s < 110 then print "The Hyperdrive refuses to engage, leaving you to drift in space."
 363 if s < 110 then print "Perhaps someone will hear your mayday" : goto 372
@@ -483,20 +484,12 @@
 484 echo = 1
 485 return
 486 if a = 31 then gosub 465: goto 136
-487 if p(13) = - 1 or p(13) = a then print "A long time ago in a galaxy far, far away..." : goto 21
+487 if p(13) = -1 or p(13) = a then print "A long time ago in a galaxy far, far away..." : goto 21
 488 print "What do you want to read, the brand name on your boots, perhaps?"
 489 goto 136
 900 q = 1
 901 if q > len(a$) then return
 902 o = asc(mid$(a$, q, 1))
-903 if o > 64 and o < 91 then a$ = left$(a$, q - 1) + chr$(o + 32) + mid$(a$, q + 1)
-904 if o > 192 and o < 219 then a$ = left$(a$, q - 1) + chr$(o - 96) + mid$(a$, q + 1)
+903 if o > 96 and o < 123 then a$ = left$(a$, q - 1) + chr$(o - 32) + mid$(a$, q + 1)
+904 if o > 192 and o < 219 then a$ = left$(a$, q - 1) + chr$(o - 128) + mid$(a$, q + 1)
 905 q = q + 1: goto 901
-910 if dbg <> 1 then return
-911 print "DBG A$="; a$
-912 for dq = 1 to len(a$): print asc(mid$(a$, dq, 1)); : next dq
-913 print: return
-920 if dbg <> 1 then return
-921 print "DBG N$="; n$
-922 for dq = 1 to len(n$): print asc(mid$(n$, dq, 1)); : next dq
-923 print: return
