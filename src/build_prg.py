@@ -5,47 +5,35 @@ import sys
 from pathlib import Path
 
 
-def lower_keywords_keep_strings(src_text: str) -> str:
-    lines = src_text.splitlines()
-    out = []
-    for line in lines:
-        m = re.match(r"^(\d+\s+)(.*)$", line)
-        if not m:
-            out.append(line.lower())
+def to_petscii_byte(ch: str) -> int:
+    o = ord(ch)
+    if 65 <= o <= 90:
+        return o + 128
+    if 97 <= o <= 122:
+        return o - 32 + 128
+    return o
+
+
+def petscii_transform_line(rest: str) -> bytes:
+    # Convert quoted strings and DATA fields to PETSCII uppercase.
+    rest_lower = rest.lower()
+    data_match = re.search(r"\bdata\b", rest_lower)
+    data_end = data_match.end() if data_match else -1
+    in_str = False
+    in_data = False
+    out = bytearray()
+    for idx, ch in enumerate(rest):
+        if not in_str and data_end != -1 and idx >= data_end:
+            in_data = True
+        if ch == '"':
+            in_str = not in_str
+            out.append(ord(ch))
             continue
-        num, rest = m.groups()
-        parts = re.split(r'(".*?")', rest)
-        for i in range(0, len(parts), 2):
-            parts[i] = parts[i].lower()
-        out.append(num + "".join(parts))
-    return "\n".join(out) + "\n"
-
-
-def patch_prg_strings(prg_path: Path) -> None:
-    blob = bytearray(prg_path.read_bytes())
-    idx = 2  # skip load address
-    while idx + 4 <= len(blob):
-        next_ptr = int.from_bytes(blob[idx:idx + 2], "little")
-        if next_ptr == 0:
-            break
-        idx += 2  # next line pointer
-        idx += 2  # line number
-        in_str = False
-        in_data = False
-        while idx < len(blob) and blob[idx] != 0:
-            b = blob[idx]
-            if not in_str and b == 0x83:
-                in_data = True  # DATA token in BASIC 2.0
-            if b == 0x22:
-                in_str = not in_str
-            elif in_data and 193 <= b <= 218:
-                blob[idx] = b - 128
-            elif in_str and 193 <= b <= 218:
-                blob[idx] = b - 128
-            idx += 1
-        if idx < len(blob) and blob[idx] == 0:
-            idx += 1
-    prg_path.write_bytes(blob)
+        if in_str or in_data:
+            out.append(to_petscii_byte(ch))
+        else:
+            out.append(ord(ch))
+    return bytes(out)
 
 
 def main() -> int:
@@ -66,15 +54,21 @@ def main() -> int:
         prg = src.with_suffix(".prg")
 
     tmp = src.with_suffix(".temp.bas")
-    pet = src.with_suffix(".pet.bas")
 
     if not src.exists():
         print(f"Missing source: {src}", file=sys.stderr)
         return 1
 
-    tmp_text = lower_keywords_keep_strings(src.read_text())
-    tmp.write_text(tmp_text)
-    pet.write_text(tmp_text)
+    tmp_text = src.read_text()
+    out_lines = []
+    for line in tmp_text.splitlines():
+        m = re.match(r"^(\d+\s+)(.*)$", line)
+        if not m:
+            out_lines.append(line.encode("latin-1"))
+            continue
+        num, rest = m.groups()
+        out_lines.append(num.encode("latin-1") + petscii_transform_line(rest))
+    tmp.write_bytes(b"\n".join(out_lines) + b"\n")
 
     try:
         subprocess.run(
@@ -88,7 +82,6 @@ def main() -> int:
         print(f"petcat failed: {exc}", file=sys.stderr)
         return 1
 
-    patch_prg_strings(prg)
     print(f"Built {prg}")
     return 0
 

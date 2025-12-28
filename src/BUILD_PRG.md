@@ -23,12 +23,11 @@ comparisons stay in ASCII uppercase.
 
 ## What the build script does
 
-1) Creates `<source>.temp.bas` by lowercasing only BASIC keywords. Strings
-inside quotes stay unchanged.
-   A copy is also written as `<source>.pet.bas` for inspection.
+1) Creates `<source>.temp.bas` by converting quoted strings and DATA fields
+to PETSCII.
 2) Tokenizes the temp file with `petcat` into `<source>.prg`.
-3) Patches PETSCII uppercase to ASCII inside quoted strings and DATA fields so
-printed text and input comparisons use the same character set.
+3) Writes PETSCII bytes for quoted strings and DATA fields before tokenizing,
+so the PRG uses proper PETSCII without post-build patching.
 4) The PRG is ready to run in VICE.
 
 ## Examples

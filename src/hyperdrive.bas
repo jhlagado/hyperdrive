@@ -1,488 +1,488 @@
-1 REM COPY RIGHT MICRO PARTS, 1982
-2 REM PRINT CHR$(142): REM DIST 10
-3 CLR
-4 TI$ = "000000"
-5 FU = 0
-6 J = 0
-7 GOSUB 419
-8 X = RND( - TI)
-9 R = 0
-10 A = 1
-11 CAN = 1
-12 MAT = 1
-13 GOSUB 385
-14 REM POKE 36869, 192: POKE 36879, 25: PRINT "."
-15 PRINT "INSTRUCTIONS? Y/N"
-16 INPUT Y$
-17 IF MID$(Y$, 1, 1) = "Y" THEN GOSUB 456
-18 PRINT ". "
-19 F = 0
-20 U = 0
-21 IF R = 1 THEN 136
-22 IF A < 18 OR CAN = 1 AND (P(21) = A OR P(21) = - 1) THEN 25
-23 PRINT "YOU CANT BREATHE!! THE AIR IS POISONED BY FUMES."
-24 GOTO 136
-25 REM PRINT A
-26 G$ = "YOU ARE IN A CORRIDOR JUNCTION."
-27 IF A = 1 THEN G$ = "YOU ARE IN YOUR SPACE YACHT, WHICH IS DOCKED WITH THE GIANT SPACE WRE"
-28 IF A = 1 THEN G$ = G$ + "CK. TO THE NORTH IS AN AIR-LOCK. IT IS OPEN."
-29 IF A = 2 THEN G$ = "YOU HAVE ENTERED THE DOCKING BAY OF THE CRUISER. THE AREA IS DIMLY L"
-30 IF A = 2 THEN G$ = G$ + "IT BY LIGHT FROM DISTANT STARS. THE AIR-LOCK HAS CLOSED AND THE EL"
-31 IF A = 2 THEN G$ = G$ + "ECTRONIC LOCK HAS ENGAGED. A PASSAGE LEADS EAST."
-32 IF A = 3 OR A = 4 THEN G$ = "SEVERAL CORRIDORS INTERSECT HERE. "
-33 IF A = 3 THEN G$ = G$ + "STREWN AROUND THE FLOOR ARE PIECES OF BROKEN MACHINERY. THE CORRID"
-34 IF A = 3 THEN G$ = G$ + "OR IS LIT BY THE EMERGENCY LAMPS, FOREVER DRAWING THEIR POWER FROM "
-35 IF A = 3 THEN G$ = G$ + "THE SOLAR STACKS."
-36 IF A = 4 THEN G$ = G$ + "SOME CABLES HAVE BEEN SEVERED AND ARE HANGING, DANGEROUSLY, FROM "
-37 IF A = 4 THEN G$ = G$ + "THE CEILING."
-38 IF A = 5 THEN G$ = "YOU ARE IN A SMALL OBSERVATION PORT. THE NORTH AND WEST WALLS ARE MAD"
-39 IF A = 5 THEN G$ = G$ + "E OF A GLASS-LIKE MATERIAL. IT IS SHOWING SIGNS OF STRESS."
-40 IF A = 6 THEN G$ = "YOU ARE IN A SERVICE TUNNEL. THERE IS A POOL OF OIL ON THE FLOOR."
-41 IF A = 8 THEN G$ = "THIS IS A MAIN CORRIDOR JUNCTION."
-42 IF A = 6 THEN G$ = "YOU ARE IN A SERVICE TUNNEL. SOMEONE HAS RIPPED THE CABLES AND EQUIPMENT"
-43 IF A = 6 THEN G$ = G$ + " FROM THE WALLS AND MANGLED THEM."
-44 IF A = 7 THEN G$ = "YOU ARE IN A SERVICE TUNNEL. A POOL OF OIL IS ON THE FLOOR."
-45 IF A = 9 THEN G$ = "YOU ARE IN AN OBSERVATION PORT. THROUGH THE EASTERN WALL YOU CAN SEE "
-46 IF A = 9 THEN G$ = G$ + "THE DISTANT EMERY NEBULA."
-47 IF A = 10 THEN G$ = "NOW YOU ARE IN AN ACCESS CHAMBER. TO THE NORTH IS A FLIMSY LADDER "
-48 IF A = 10 THEN G$ = G$ + "LEADING UPWARDS."
-49 IF A = 11 THEN G$ = "YOU ARE ON THE LADDER IN A PLEXIGLASS OBSERVATION TUBE, WHICH IS USE"
-50 IF A = 11 THEN G$ = G$ + "D TO SERVICE THE STABILIZER RETROS."
-51 IF A = 12 THEN G$ = "YOU ARE STANDING AT THE TOP OF A LADDER. A PASSAGE LEADS SOUTH."
-52 IF A = 13 THEN G$ = "EQUIPMENT LINES THE WALLS. THIS ROOM IS THE RELAY STATION BETWEEN THE "
-53 IF A = 13 THEN G$ = G$ + "UPPER AND LOWER DECKS OF THE CRUISER."
-54 IF A = 14 THEN G$ = "YOU ARE IN A DARK ROOM. TO THE WEST IS A ROOM MARKED 'TRANSMAT'."
-55 IF A = 15 THEN G$ = "YOU ARE IN A LONG, DIMLY LIT PASSAGE. THE AIR SMELLS OF OZONE."
-56 IF A = 16 THEN G$ = ". YOU ARE STANDING IN A SMALL METAL BAY. IN FRONT OF YOU ARE SEVERAL "
-57 IF A = 16 THEN G$ = G$ + "COMPUTER BANKS ONE OF THEM BEARING THE WORD . TRANSMAT."
-58 IF A = 17 THEN G$ = "THIS IS AN ESCAPE POD. TO ACTIVATE IT YOU NEED TO KNOW A SECRET CODE"
-59 IF A = 18 THEN G$ = "BEFORE YOU LOOMS ONE OF THE CRUISER'S WARP ENGINES. IT IS UNDAMAGED."
-60 IF A = 19 THEN G$ = "YOU ARE IN THE MAINTENANCE WORKSHOP."
-61 IF A = 20 OR A = 34 THEN G$ = "THE WARP ENGINE STRETCHES AWAY TO THE SOUTH."
-62 IF A > 20 AND A < 26 THEN G$ = "YOU ARE IN A LONG, DARK CORRIDOR."
-63 IF A = 27 THEN G$ = "YOU ARE IN A SMALL ROOM. THERE IS NO WAY OUT."
-64 IF A = 28 THEN G$ = "YOU ARE ON A LEDGE OVERLOOKING A DEEP SHAFT."
-65 IF A = 30 THEN G$ = "YOU ARE ON THE BRIDGE OF THE CRUISER."
-66 IF A = 31 THEN G$ = "YOU ARE ON THE BRIDGE. BEFORE YOU IS A LARGE CHART."
-67 IF A = 32 THEN G$ = "THE MANUAL CONTROLS OF THE CRUISER LINE THE WALLS."
-68 IF A = 33 THEN G$ = G$ + ". BEFORE YOU IS A SMALL COMPUTER TERMINAL LABELLED "
-69 IF A = 33 THEN G$ = G$ + ". FLIGHT COMPUTER. IT SEEMS TOO SMALL FOR SUCH A TASK. SOME OF ITS"
-70 IF A = 33 THEN G$ = G$ + " CIRCUIT CARDS ARE MISSING."
-71 IF A = 35 THEN G$ = "BEFORE YOU LOOMS A WARP ENGINE. IT HAS BEEN BURNT OUT."
-72 IF A = 37 THEN G$ = "HERE THE MAIN CORRIDOR ENDS. FROM IT BRANCH THREE ACCESS TUNNELS."
-73 IF A = 38 THEN G$ = ".. YOU ARE CRAWLING THROUGH A LONG, DARK WIRING CONDUIT. THE SURFACES "
-74 IF A = 38 THEN G$ = G$ + " ARE COVERED IN SHARP RIVETS THAT MAKE CRAWLING AGONIZING."
-75 IF A = 39 THEN G$ = "BEFORE YOU LOOMS ONE OF THE WARP ENGINES. IT STRETCHES AWAY TO THE "
-76 IF A = 39 THEN G$ = G$ + "NORTH."
-77 IF A = 40 THEN G$ = "YOU ARE IN A LONG EAST-WEST ACCESS TUNNEL."
-78 IF A = 42 THEN G$ = G$ + " YOU ARE WALKING IN CIRCLES."
-79 IF A = 43 THEN G$ = "YOU ARE AT ANOTHER CORRIDOR JUNCTION."
-80 IF A = 45 THEN G$ = "THE CORRIDORS ARE CHANGING BEFORE YOUR VERY EYES!"
-81 IF A = 46 THEN G$ = "YOU ARE IN AN ENDLESS PASSAGE. THE SILENCE IS TERRIFYING..."
-82 IF A = 47 THEN G$ = "YOU ARE STANDING IN AN ACOUSTICALLY SEALED ROOM."
-83 IF A = 47 THEN GOSUB 476
-84 IF A = 48 THEN G$ = "BEFORE YOU IS AN ELECTRONIC MINE FIELD... ONE FALSE STEP WILL BE FATAL."
-85 IF A = 49 THEN G$ = "YOU SURVIVED THE MINE FIELD AND HAVE STUMBLED INTO A DIMENSIONAL WAR"
-86 IF A = 49 THEN G$ = G$ + "P. NOTHING APPEARS TO BE WHERE IT IS. A PASSAGE LEADS SOUTH."
-87 IF A = 50 THEN G$ = "YOU HAVE PENETRATED THE COMPUTER COMPLEX. "
-88 IF A = 50 AND P(11) = 50 THEN POKE 36878, 15: POKE 36876, 210: POKE 36877, 254
-89 IF A = 50 AND P(11) = 50 THEN G$ = G$ + "THE SONIC PROTECTION SYSTEM IS CONFUSING YOUR THOUGHTS"
-90 IF A = 50 AND P(11) = 50 THEN TR = TR + 1
-91 IF TR > 1 THEN PRINT "YOUR BRAINS HAVE BEEN SCRAMBLED BY PROLONGED EXPOSURE TO SONIC"
-92 IF TR > 1 THEN PRINT "VIBRATIONS. YOU ALMOST MADE IT!" : GOTO 335
-93 IF A = 51 THEN G$ = "THERE IS A HEAVY IRON DOOR TO THE NORTH."
-94 IF A = 53 THEN G$ = ". YOU ARE IN A SMALL OBSERVATION BUBBLE. FROM HERE YOU CAN SEE YOUR YAC"
-95 IF A = 53 THEN G$ = G$ + "HT IN THE DOCKING BAY. THE DAMAGE TO THE YACHT APPEARS TO BE MINOR"
-96 IF A = 52 OR A = 54 THEN G$ = "YOU ARE IN A LONG DIMLY LIT PASSAGE. "
-97 IF A = 54 THEN G$ = G$ + "THERE IS A BODY ON THE FLOOR. IT HAS BEEN SHOT."
-98 X = 1
-99 IF G$ = "" THEN G$ = " "
-100 H = X + 20
-101 IF H > LEN(G$) THEN H = LEN(G$)
-102 IF MID$(G$, H, 1) = " " OR H = LEN(G$) THEN 105
-103 H = H - 1
-104 GOTO 102
-105 PRINT MID$(G$, X, H - X + 1)
-106 IF H = LEN(G$) THEN 109
-107 X = H + 1
-108 GOTO 100
-109 IF A = 10 AND C(A, 1) = 0 THEN PRINT "IT IS TOO DAMAGED TO CLIMB"
-110 IF A = 12 AND C(A, 1) = 0 THEN PRINT "THE LADDER HAS BROKEN FREE AND COLLAPSED."
-111 REM IF A = 48 AND C(A, 4) = 128 THEN PRINT "."
-112 IF U > 200 THEN PRINT "YOUR OXYGEN IS RUNNING OUT."
-113 IF U < 230 THEN 116
-114 CAN = 0
-115 PRINT "IN FACT YOU HAVE RUN OUT!"
-116 V = 0
-117 FOR L = 7 TO 24
-118 IF P(L) = A THEN V = V + 1
-119 NEXT L
-120 IF V = 0 THEN 125
-121 PRINT "YOU CAN ALSO SEE:"
-122 FOR L = 7 TO 24
-123 IF P(L) = A THEN GOSUB 425
-124 NEXT L
-125 V = 0
-126 FOR L = 1 TO 6
-127 IF P(L) = A THEN V = V + 1
-128 NEXT L
-129 IF V = 0 THEN 135
-130 PRINT
-131 PRINT "NEARBY THERE LURKS"
-132 FOR L = 1 TO 6
-133 IF P(L) = A THEN GOSUB 425
-134 NEXT L
-135 R = 1
-136 IF A <> 50 OR P(11) <> 50 THEN POKE 36878, 0: POKE 36877, 0: POKE 36876, 0
-137 PRINT: PRINT "OK... WHAT NOW?"
-138 N(1) = 0
-139 N(2) = 0
-140 INPUT A$
-141 IF A$ = "N" THEN N(1) = 1: GOTO 175
-142 IF A$ = "S" THEN N(1) = 2: GOTO 175
-143 IF A$ = "W" THEN N(1) = 3: GOTO 175
-144 IF A$ = "E" THEN N(1) = 4: GOTO 175
-145 IF A$ = "UP" THEN N(1) = 1: GOTO 175
-146 IF A$ = "DOWN" THEN N(1) = 1: GOTO 175
-147 A$ = A$ + " "
-148 REM N(1) = 0
-149 REM N(2) = 0
-150 PRINT: PRINT: PRINT
-151 PRINT
-152 U = U + 1
-153 T = 1
-154 M = 0
-155 M = M + 1
-156 RESTORE
-157 FOR X = 1 TO 55
-158 READ N$
-159 IF M + LEN(N$) > LEN(A$) THEN 171
-160 IF MID$(A$, M, LEN(N$)) = N$ THEN 163
-161 NEXT X
-162 GOTO 155
-163 N(T) = X
-164 FOR Z = M TO LEN(A$)
-165 IF MID$(A$, Z, 1) = " " THEN 167
-166 NEXT Z
-167 T = T + 1
-168 M = Z
-169 IF T > 2 THEN 171
-170 GOTO 155
-171 IF T <> 1 THEN 174
-172 PRINT "I DON'T UNDERSTAND THAT!"
-173 GOTO 21
-174 N(1) = N(1) - 24
-175 REM PRINT N(1);N(2)
-176 IF N(1) = 14 OR N(1) = 13 THEN N(1) = 12
-177 IF N(1) < 1 THEN 172
-178 IF A = 11 THEN C(10, 1) = 0
-179 IF A = 11 THEN C(12, 1) = 0
-180 REM CLOSESECRET ROOMS
-181 IF A = 2 THEN J = 1
-182 IF A = 50 THEN C(22, 1) = 53
-183 IF A = 50 THEN C(45, 1) = 31
-184 IF P(24) <> 17 THEN FU = 1
-185 IF FU = 1 AND P(24) = 17 THEN C(17, 4) = 12
-186 IF A = 49 THEN C(48, 4) = 49
-187 IF N(1) = 27 THEN N(1) = 10
-188 IF N(1) = 26 THEN 486
-189 IF N(1) = 15 THEN N(1) = 16
-190 IF N(1) > 27 THEN N(1) = N(1) - 27
-191 IF N(1) < 15 THEN 195
-192 IF N(1) > 16 THEN PRINT "HOW?"
-193 IF N(1) < 17 THEN PRINT "HOW DESTRUCTIVE!!"
-194 GOTO 138
-195 REM
-196 IF N(1) < 7 OR N(1) > 9 THEN 211
-197 ON N(1) - 6 GOTO 198, 200, 210
-198 R = 0
-199 GOTO 21
-200 PRINT "YOU ARE CARRYING "
-201 V = 0
-202 FOR L = 7 TO 24
-203 IF P(L) = - 1 THEN V = V + 1
-204 NEXT L
-205 IF V = 0 THEN PRINT "NOTHING." : GOTO 209
-206 FOR L = 7 TO 24
-207 IF P(L) = - 1 THEN GOSUB 425
-208 NEXT L
-209 GOTO 21
-210 GOTO 335
-211 FOR Z = 1 TO 6
-212 IF P(Z) = A THEN 215
-213 NEXT Z
-214 GOTO 228
-215 IF N(2) = 20 THEN 228
-216 IF Z = 5 THEN GOTO 223
-217 RESTORE
-218 FOR MO = 1 TO Z
-219 READ K$
-220 NEXT MO
-221 PRINT "AUUUUGH... YOU'VE JUST BEEN KILLED BY A " : PRINT K$
-222 GOTO 335
-223 PRINT "THE RUSTY DRONE PICKED YOU UP AND CARRIED YOU TO ANOTHER PLACE."
-224 A = 33
-225 R = 0
-226 P(5) = P(5) + 7
-227 GOTO 21
-228 IF N(1) > 4 THEN 242
-229 IF P(8) = - 1 OR P(8) = A THEN 232
-230 N(1) = INT(RND(1) * 4 + 1)
-231 REM
-232 B = C(A, N(1))
-233 IF B = 0 THEN PRINT "YOU CANT GO THAT WAY."
-234 IF B = 128 THEN PRINT "THE PLEXIGLASS CRACKS THEN SHATTERS. YOU ARE SUCKED OUT INTO SPACE."
-235 IF B = 129 THEN PRINT "YOU FALL DOWN THE SHAFT AND ARE KILLED."
-236 IF B = 130 THEN PRINT "YOU STEP INTO THE AIR-LOCK. THE SECOND AIR-LOCK DOOR OPENS AND"
-237 IF B = 130 THEN PRINT "YOU ARE SUCKED OUT INTO SPACE."
-238 IF B > 127 THEN 335
-239 IF B > 0 THEN A = B
-240 R = 0
-241 GOTO 21
-242 IF N(1) <> 5 THEN 257
-243 IF N(1) <> 5 THEN 257
-244 R = 0
-245 IF A = 16 AND P(17) = - 1 THEN 250
-246 A = 16
-247 PRINT "SUDDENLY.. THE ROOM VANISHES FROM BEFORE YOU."
-248 FOR DE = 1 TO 1000: NEXT DE
-249 GOTO 21
-250 PRINT "ENTER DESTINATION CODE"
-251 INPUT CO$
-252 IF LEFT$(CO$, 1) = "Y" THEN A = 1: GOTO 247
-253 IF LEFT$(CO$, 1) = "B" THEN A = 31: GOTO 247
-254 IF LEFT$(CO$, 1) = "C" THEN A = 41: GOTO 247
-255 GOTO 21
-256 GOTO 247
-257 IF N(1) <> 6 THEN 260
-258 REM
-259 GOTO 21
-260 IF N(2) < 1 THEN 172
-261 IF P(N(2)) = - 1 OR P(N(2)) = A THEN 264
-262 PRINT "WHERE? I CAN'T SEE IT."
-263 GOTO 21
-264 ON N(1) - 9 GOTO 265, 274, 276
-265 N = 1
-266 FOR X = 1 TO 24
-267 IF P(X) = - 1 THEN N = N + 1
-268 NEXT X
-269 IF N < 12 THEN 272
-270 PRINT "YOU ARE CARRYING TOO MANY OBJECTS."
-271 GOTO 21
-272 P(N(2)) = - 1
-273 GOTO 136
-274 P(N(2)) = A
-275 GOTO 136
-276 IF N(2) > 17 AND N(2) < 23 THEN 279
-277 PRINT "NOTHING HAPPENS!"
-278 GOTO 136
-279 ON N(2) - 17 GOTO 311, 280, 289, 277, 326
-280 IF A = 2 OR A = 27 THEN 283
-281 PRINT "IT WON'T OPEN"
-282 GOTO 21
-283 PRINT "YOU OPENED THE DOOR."
-284 P(N(2)) = A
-285 R = 0
-286 IF A = 2 THEN A = 1
-287 IF A = 27 THEN A = 54
-288 GOTO 21
-289 IF Z < 7 THEN 292
-290 PRINT "THERE'S NOTHING TO DESTROY!"
-291 GOTO 21
-292 F = F + 1
-293 REM * * * * MODIFICATI ON WAS 15
-294 IF RND(1) * 7 + 10 > F THEN 297
-295 PRINT "YOU SHOOT AT IT AND MISS. THE MACHINE DEALS YOU A FATAL WOUND."
-296 GOTO 335
-297 IF RND(1) < .38 THEN 306
-298 L = INT(RND(1) * 4)
-299 IF Z = 5 THEN GOTO 223
-300 IF L = 0 THEN PRINT "YOU FIRE AT THE MACHINE BUT IT MOVES ASIDE."
-301 IF L = 1 THEN PRINT "THE MACHINE IS DAMAGED BUT IT ATTACKS AGAIN."
-302 IF L = 2 THEN PRINT "THE SHOT DAMAGES THE MACHINE SLIGHTLY. IT ATTACKS AGAIN."
-303 IF L = 3 THEN PRINT "YOU MISSED AND IT FIGHTS BACK WITH A LOGICAL CALMNESS THAT"
-304 IF L = 3 THEN PRINT "ALARMS YOU."
-305 GOTO 21
-306 PRINT "THE SHOT IS WELL AIMED AND THE MACHINE SCUTTLES AWAY, BADLY DAMAGED."
-307 P(N(2)) = - 1
-308 IF Z = 3 OR Z = 5 THEN P(Z) = P(Z) + 10
-309 IF P(Z) = A THEN P(Z) = 0
-310 GOTO 21
-311 IF P(9) = - 1 OR P(9) = A THEN 315
-312 PRINT "THAT WON'T BURN, DUMMY!! IN FACT, THE MATCH WENT OUT."
-313 MAT = 0
-314 GOTO 21
-315 IF MAT = 1 THEN 318
-316 PRINT "BUT THE MATCH IS OUT, STUPID!!"
-317 GOTO 21
-318 PRINT "THE FUSE BURNT AWAY AND... BOOM!!... THE EXPLOSION BLEW YOU OUT OF THE WAY!!"
-319 R = 0
-320 IF A = 2 THEN C(A, 2) = 1
-321 IF A = 51 THEN C(A, 1) = 130
-322 IF A > 1 THEN A = A - 1
-323 IF A = 20 THEN C(20, 3) = 19
-324 P(9) = 0
-325 GOTO 21
-326 IF A = 28 THEN 329
-327 PRINT "IT'S TOO DANGEROUS!!!"
-328 GOTO 21
-329 PRINT "YOU DESCEND THE ROPE, BUT IT DROPS 10 FEET SHORT OF THE FLOOR."
-330 PRINT "YOU JUMP THE REST OF THE WAY."
-331 R = 0
-332 P(N(2)) = A
-333 A = 27
-334 GOTO 21
-335 S = 0
-336 FOR X = 7 TO 17
-337 IF P(X) = - 1 THEN S = S + X - 6
-338 IF P(X) = 1 THEN S = S + (X - 6) * 2
-339 NEXT X
-340 PRINT: PRINT: PRINT: PRINT
-341 PRINT "YOU GOT A SCORE OF "
-342 PRINT S;
-344 PRINT "IN" ;U; " MOVES."
-345 IF A > 1 OR J < 1 THEN 372
-346 PRINT "YOU SPEND THE NEXT DAY REPAIRING YOUR YACHT WITH THE EQUIPMENT"
-347 PRINT "THAT YOU FOUND ON THE WRECK. "
-348 PRINT "HOPING THAT YOU HAVE BEEN SUCCESSFUL IN REPAIRING THE YACHT "
-349 PRINT "YOU MANOEUVRE THE YACHT INTO SPACE AND ENGAGE THE HYPERDRIVE... "
-350 FOR DE = 1 TO 4000: NEXT DE
-351 IF S > 79 THEN 362
-352 IF S < 80 THEN PRINT "THE YACHT BEGINS TO MOVE FORWARD, THEN SUDDENLY THE DRIVE "
-353 IF S < 80 THEN PRINT "OVERLOADS AND EXPLODES BLOWING YOU INTO COSMIC DUST"
-354 POKE 36878, 15
-355 FOR X = 255 TO 128 STEP - 1
-356 POKE 36877, X
-357 FOR DE = 1 TO 20: NEXT DE
-358 POKE 36874, X
-359 NEXT X
-360 FOR X = 15 TO 0 STEP - 1 : FOR Y = 1 TO 20: NEXT Y: POKE 36878, X: NEXT X
-361 GOTO 372
-362 IF S < 110 THEN PRINT "THE HYPERDRIVE REFUSES TO ENGAGE, LEAVING YOU TO DRIFT IN SPACE."
-363 IF S < 110 THEN PRINT "PERHAPS SOMEONE WILL HEAR YOUR MAYDAY" : GOTO 372
-364 IF S < 126 THEN PRINT "THE HYPERDRIVE ENGAGES AND THE YACHT MOVES SLOWLY OFF INTO SPACE."
-365 IF S < 126 THEN PRINT "YOU FIND THAT YOU ARE LIMITED TO HALF SPEED. IT MAY TAKE A WHILE"
-366 IF S < 126 THEN PRINT "BUT YOU WILL GET HOME!! " : GOTO 372
-367 IF S = 126 THEN PRINT "THE ALIEN HYPERDRIVE IS SUPERIOR TO THE OLD HYPERDRIVE."
-368 FOR X = 1 TO 2000: NEXT X
-369 IF S = 126 THEN PRINT ". YOU ARE ABLE TO ACHIEVE SPEEDS GREATER THAN EVER BEFORE!!"
-370 IF S = 126 THEN PRINT "IF YOU SELL THE DRIVE YOU WILL BE ONE OF THE RICHEST MEN ON EARTH."
-371 IF S = 126 THEN PRINT "CONGRATULATIONS!! YOU MADE IT."
-372 REM
-373 PRINT "ANOTHER ADVENTURE?"
-374 INPUT A$
-375 IF LEFT$ (A$, 1) = "Y" THEN 3
-376 PRINT "YES OR NO - THIS IS YOUR LAST CHANCE!!"
-377 INPUT W$
-378 IF LEFT$ (W$, 1) = "Y" THEN 3
-379 PRINT " YOU HAVE BEEN PLAYING HYPERDRIVE FOR"
-380 PRINT LEFT$(TI$, 2); " HOURS " ;MID$(TI$, 3, 2); " MINUTES!!"
-381 FOR DE = 1 TO 5000: NEXT DE
-382 POKE 36879, 8
-383 END
-384 REM
-385 RESTORE
-386 FOR X = 1 TO 56
-387 READ B$
-388 NEXT X
-389 DIM P(24)
-390 FOR X = 1 TO 24
-391 READ P(X)
-392 NEXT X
-393 DIM C(54, 4)
-394 FOR X = 1 TO 54
-395 FOR Y = 1 TO 4
-396 READ C(X, Y)
-397 NEXT Y
-398 NEXT X
-399 RETURN
-400 DATA DRONE, 'DROID, HUMANOID, MACHINE, DRONE, ROBOT, PUMP
-401 DATA COMPASS, BOMB, MEMORY, PROCESSOR, TAPE
-402 DATA BOOK, SERVO, TOOL KIT, CLOCK, BRACELET, MATCHES, SCREWDRIVER
-403 DATA BLASTER, MASK, ROPE, MAGNET, FUSE, NORTH
-404 DATA SOUTH
-405 DATA WEST, EAST, TRANSMAT, APE, LOOK, LIST, QUIT, TAKE
-406 DATA DROP, USE, USING, WITH, CUT, BREAK, UP
-407 DATA UNLOCK, OPEN, KILL, SHOOT, LIGHT, BURN, DOWN, JUMP, READ, GET, Z , Z , Z , Z , HELP
-408 DATA 5, 36, 42, 16, 52, 25, 37, 1, 26, 50, 50, 33, 21, 41, 19, 9, 27, 2, 19, 7, 12, 40, 34, 17
-409 DATA 2, 0, 0, 0, 128, 0, 128, 3, 5, 6, 2, 4, 3, 0, 3, 8
-410 DATA 128, 4, 128, 9, 0, 0, 3, 7, 8, 0, 6, 0, 9, 7, 10, 9, 10, 8, 5, 128, 11
-411 DATA 0, 5, 9, 12, 10, 128, 128, 11, 36, 17, 17, 15, 14, 0, 0, 13, 0, 16, 51, 13, 31, 26, 26, 26, 0, 29, 14, 0
-412 DATA 0, 0, 0, 0, 20, 19, 0, 0, 0, 0, 18, 18, 39, 0, 21, 22, 0, 20, 0, 53, 21, 0, 23, 0, 0, 22, 36, 0, 0, 36
-413 DATA 25, 28, 0, 24, 35, 0, 26, 15, 15, 0, 0, 0, 0, 129, 0, 0, 0, 0, 52, 0, 16, 0, 0, 128, 31, 0, 15, 30, 32
-414 DATA 0, 33, 0, 31, 32, 0, 0, 128, 35, 39, 0, 0, 0, 34, 25, 0, 37, 12, 23, 24, 36, 38, 38, 38
-415 DATA 37, 39, 39, 39, 37, 0, 40, 40
-416 DATA 0, 0, 39, 39, 46, 42, 41, 41, 41, 41, 43, 43, 41, 44, 42, 42, 45, 42, 46, 46, 46, 44, 46, 47
-417 DATA 41, 41, 42, 42, 0, 48, 45, 0, 47, 49, 45, 0, 50, 0, 0, 48, 49, 0, 0, 0, 0, 54, 14, 0, 29, 53, 0, 0
-418 DATA 0, 22, 0, 0, 51, 27, 0, 0
-419 REM POKE 36879, 78
-420 REM POKE 36869, 194
-421 PRINT "."
-422 PRINT "HYPERDRIVE"
-423 PRINT "BY KEN STONE AND JOHN HARDY"
-424 RETURN
-425 RESTORE
-426 FOR K = 1 TO L
-427 READ H$
-428 NEXT K
-429 PRINT "A" ;
-430 IF L = 5 THEN PRINT " RUSTY " ;
-431 IF L = 7 THEN PRINT " FUEL " ;
-432 IF L = 24 THEN PRINT " SMALL " ;
-433 IF L = 4 THEN PRINT " SECURITY " ;
-434 IF L = 1 THEN PRINT " SERVICE " ;
-435 IF L = 3 THEN PRINT " BATTERED " ;
-436 IF L = 13 THEN PRINT "N INTERESTING " ;
-437 IF L = 14 THEN PRINT " STABILIZER " ;
-438 IF L = 18 THEN PRINT " BOX OF " ;
-439 IF L = 11 THEN PRINT " COMPUTER " ;
-440 IF L = 17 THEN PRINT " TRANSMAT " ;
-441 IF L = 19 THEN PRINT " SONIC " ;
-442 IF L = 22 THEN PRINT " THIN AND TATTY " ;
-443 IF L = 16 THEN PRINT " DIGITAL " ;
-444 IF L = 20 THEN PRINT " HAND-HELD " ;
-445 IF L = 2 THEN PRINT " DILAPIDATED " ;
-446 IF L = 6 THEN PRINT "N OLD " ;
-447 IF L = 8 THEN PRINT " " ;
-448 IF L = 9 THEN PRINT " " ;
-449 IF L = 10 THEN PRINT " COMPUTER " ;
-450 IF L = 12 THEN PRINT " COMPUTER " ;
-451 IF L = 15 THEN PRINT " " ;
-452 IF L = 21 THEN PRINT " GAS " ;
-453 IF L = 23 THEN PRINT " SMALL " ;
-454 PRINT H$
-455 RETURN
-456 PRINT "."
-457 PRINT "YOUR SPACE YACHT HAS BEEN DAMAGED IN A FREAK SPACE ACCIDENT."
-458 PRINT "YOU ARE FORCED TO DOCK WITH A DESERTED WRECK IN AN ATTEMPT TO FIND"
-459 PRINT "THE EQUIPMENT NEEDED TO REPAIR YOUR YACHT."
-460 PRINT "CONTINUE?" : INPUT W$: PRINT "."
-461 PRINT "TO GET YOU STARTED HERE ARE SOME COMMANDS YOU MAY USE :-"
-462 PRINT "NORTH LOOK LIST QUIT"
-463 PRINT "CONTINUE?" : INPUT W$
-464 RETURN
-465 PRINT "....................."
-466 PRINT ". EMERGENCY ."
-467 PRINT ". COMPUTER SHUTDOWN ."
-468 PRINT ". PROCEDURE ."
-469 PRINT ". ."
-470 PRINT ". TRANSMAT INTO ."
-471 PRINT ". COMPUTER VAULT AND."
-472 PRINT ". REMOVE PROCESSOR ."
-473 PRINT ". AND MEMORY CARDS. ."
-474 PRINT "....................."
-475 RETURN
-476 IF ECHO = 1 THEN RETURN
-477 PRINT "YOU ARE STANDING IN AN ACOUSTICALLY SEALED ROOM." : PRINT: PRINT
-478 PRINT "OK, WHAT NOW?"
-479 INPUT ECHO$
-480 PRINT: PRINT
-481 PRINT ECHO$
-482 PRINT: PRINT
-483 IF ECHO$ <> "ECHO" THEN 479
-484 ECHO = 1
-485 RETURN
-486 IF A = 31 THEN GOSUB 465: GOTO 136
-487 IF P(13) = - 1 OR P(13) = A THEN PRINT "A LONG TIME AGO IN A GALAXY FAR, FAR AWAY.." : GOTO 21
-488 PRINT "WHAT DO YOU WANT TO READ, THE BRAND NAME ON YOUR BOOTS, PERHAPS?"
-489 GOTO 136
+1 rem copy right micro parts, 1982
+2 print chr$(14): rem dist 10
+3 clr
+4 ti$ = "000000"
+5 fu = 0
+6 j = 0
+7 gosub 419
+8 x = rnd( - ti)
+9 r = 0
+10 a = 1
+11 can = 1
+12 mat = 1
+13 gosub 385
+14 rem poke 36869, 192: poke 36879, 25: print "."
+15 print "Instructions? y/n"
+16 input y$
+17 if mid$(y$, 1, 1) = "y" then gosub 456
+18 print ". "
+19 f = 0
+20 u = 0
+21 if r = 1 then 136
+22 if a < 18 or can = 1 and (p(21) = a or p(21) = - 1) then 25
+23 print "You cant breathe!! The air is poisoned by fumes."
+24 goto 136
+25 rem print a
+26 g$ = "You are in a corridor junction."
+27 if a = 1 then g$ = "You are in your space yacht, which is docked with the giant space wre"
+28 if a = 1 then g$ = g$ + "ck. To the north is an air-lock. It is open."
+29 if a = 2 then g$ = "You have entered the docking bay of the cruiser. The area is dimly l"
+30 if a = 2 then g$ = g$ + "it by light from distant stars. The air-lock has closed and the el"
+31 if a = 2 then g$ = g$ + "ectronic lock has engaged. A passage leads east."
+32 if a = 3 or a = 4 then g$ = "Several corridors intersect here. "
+33 if a = 3 then g$ = g$ + "Strewn around the floor are pieces of broken machinery. The corrid"
+34 if a = 3 then g$ = g$ + "or is lit by the emergency lamps, forever drawing their power from "
+35 if a = 3 then g$ = g$ + "the solar stacks."
+36 if a = 4 then g$ = g$ + "Some cables have been severed and are hanging, dangerously, from "
+37 if a = 4 then g$ = g$ + "the ceiling."
+38 if a = 5 then g$ = "You are in a small observation port. The north and west walls are mad"
+39 if a = 5 then g$ = g$ + "e of a glass-like material. It is showing signs of stress."
+40 if a = 6 then g$ = "You are in a service tunnel. There is a pool of oil on the floor."
+41 if a = 8 then g$ = "This is a main corridor junction."
+42 if a = 6 then g$ = "You are in a service tunnel. Someone has ripped the cables and equipment"
+43 if a = 6 then g$ = g$ + " from the walls and mangled them."
+44 if a = 7 then g$ = "You are in a service tunnel. A pool of oil is on the floor."
+45 if a = 9 then g$ = "You are in an observation port. Through the eastern wall you can see "
+46 if a = 9 then g$ = g$ + "the distant emery nebula."
+47 if a = 10 then g$ = "Now you are in an access chamber. To the north is a flimsy ladder "
+48 if a = 10 then g$ = g$ + "leading upwards."
+49 if a = 11 then g$ = "You are on the ladder in a plexiglass observation tube, which is use"
+50 if a = 11 then g$ = g$ + "d to service the stabilizer retros."
+51 if a = 12 then g$ = "You are standing at the top of a ladder. A passage leads south."
+52 if a = 13 then g$ = "Equipment lines the walls. This room is the relay station between the "
+53 if a = 13 then g$ = g$ + "upper and lower decks of the cruiser."
+54 if a = 14 then g$ = "You are in a dark room. To the west is a room marked 'Transmat'."
+55 if a = 15 then g$ = "You are in a long, dimly lit passage. The air smells of ozone."
+56 if a = 16 then g$ = ". You are standing in a small metal bay. In front of you are several "
+57 if a = 16 then g$ = g$ + "computer banks one of them bearing the word . Transmat."
+58 if a = 17 then g$ = "This is an escape pod. To activate it you need to know a secret code"
+59 if a = 18 then g$ = "Before you looms one of the cruiser's warp engines. It is undamaged."
+60 if a = 19 then g$ = "You are in the maintenance workshop."
+61 if a = 20 or a = 34 then g$ = "The warp engine stretches away to the south."
+62 if a > 20 and a < 26 then g$ = "You are in a long, dark corridor."
+63 if a = 27 then g$ = "You are in a small room. There is no way out."
+64 if a = 28 then g$ = "You are on a ledge overlooking a deep shaft."
+65 if a = 30 then g$ = "You are on the bridge of the cruiser."
+66 if a = 31 then g$ = "You are on the bridge. Before you is a large chart."
+67 if a = 32 then g$ = "The manual controls of the cruiser line the walls."
+68 if a = 33 then g$ = g$ + ". Before you is a small computer terminal labelled "
+69 if a = 33 then g$ = g$ + ". Flight computer. It seems too small for such a task. Some of its"
+70 if a = 33 then g$ = g$ + " circuit cards are missing."
+71 if a = 35 then g$ = "Before you looms a warp engine. It has been burnt out."
+72 if a = 37 then g$ = "Here the main corridor ends. From it branch three access tunnels."
+73 if a = 38 then g$ = ".. You are crawling through a long, dark wiring conduit. The surfaces "
+74 if a = 38 then g$ = g$ + " are covered in sharp rivets that make crawling agonizing."
+75 if a = 39 then g$ = "Before you looms one of the warp engines. It stretches away to the "
+76 if a = 39 then g$ = g$ + "north."
+77 if a = 40 then g$ = "You are in a long east-west access tunnel."
+78 if a = 42 then g$ = g$ + " You are walking in circles."
+79 if a = 43 then g$ = "You are at another corridor junction."
+80 if a = 45 then g$ = "The corridors are changing before your very eyes!"
+81 if a = 46 then g$ = "You are in an endless passage. The silence is terrifying..."
+82 if a = 47 then g$ = "You are standing in an acoustically sealed room."
+83 if a = 47 then gosub 476
+84 if a = 48 then g$ = "Before you is an electronic mine field... One false step will be fatal."
+85 if a = 49 then g$ = "You survived the mine field and have stumbled into a dimensional war"
+86 if a = 49 then g$ = g$ + "p. Nothing appears to be where it is. A passage leads south."
+87 if a = 50 then g$ = "You have penetrated the computer complex. "
+88 if a = 50 and p(11) = 50 then poke 36878, 15: poke 36876, 210: poke 36877, 254
+89 if a = 50 and p(11) = 50 then g$ = g$ + "The sonic protection system is confusing your thoughts"
+90 if a = 50 and p(11) = 50 then tr = tr + 1
+91 if tr > 1 then print "Your brains have been scrambled by prolonged exposure to sonic"
+92 if tr > 1 then print "Vibrations. You almost made it!" : goto 335
+93 if a = 51 then g$ = "There is a heavy iron door to the north."
+94 if a = 53 then g$ = ". You are in a small observation bubble. From here you can see your yac"
+95 if a = 53 then g$ = g$ + "ht in the docking bay. The damage to the yacht appears to be minor"
+96 if a = 52 or a = 54 then g$ = "You are in a long dimly lit passage. "
+97 if a = 54 then g$ = g$ + "There is a body on the floor. It has been shot."
+98 x = 1
+99 if g$ = "" then g$ = " "
+100 h = x + 20
+101 if h > len(g$) then h = len(g$)
+102 if mid$(g$, h, 1) = " " or h = len(g$) then 105
+103 h = h - 1
+104 goto 102
+105 print mid$(g$, x, h - x + 1)
+106 if h = len(g$) then 109
+107 x = h + 1
+108 goto 100
+109 if a = 10 and c(a, 1) = 0 then print "It is too damaged to climb"
+110 if a = 12 and c(a, 1) = 0 then print "The ladder has broken free and collapsed."
+111 rem if a = 48 and c(a, 4) = 128 then print "."
+112 if u > 200 then print "Your oxygen is running out."
+113 if u < 230 then 116
+114 can = 0
+115 print "In fact you have run out!"
+116 v = 0
+117 for l = 7 to 24
+118 if p(l) = a then v = v + 1
+119 next l
+120 if v = 0 then 125
+121 print "You can also see:"
+122 for l = 7 to 24
+123 if p(l) = a then gosub 425
+124 next l
+125 v = 0
+126 for l = 1 to 6
+127 if p(l) = a then v = v + 1
+128 next l
+129 if v = 0 then 135
+130 print
+131 print "Nearby there lurks"
+132 for l = 1 to 6
+133 if p(l) = a then gosub 425
+134 next l
+135 r = 1
+136 if a <> 50 or p(11) <> 50 then poke 36878, 0: poke 36877, 0: poke 36876, 0
+137 print: print "Ok... What now?"
+138 n(1) = 0
+139 n(2) = 0
+140 input a$
+141 if a$ = "n" then n(1) = 1: goto 175
+142 if a$ = "s" then n(1) = 2: goto 175
+143 if a$ = "w" then n(1) = 3: goto 175
+144 if a$ = "e" then n(1) = 4: goto 175
+145 if a$ = "up" then n(1) = 1: goto 175
+146 if a$ = "down" then n(1) = 1: goto 175
+147 a$ = a$ + " "
+148 rem n(1) = 0
+149 rem n(2) = 0
+150 print: print: print
+151 print
+152 u = u + 1
+153 t = 1
+154 m = 0
+155 m = m + 1
+156 restore
+157 for x = 1 to 55
+158 read n$
+159 if m + len(n$) > len(a$) then 171
+160 if mid$(a$, m, len(n$)) = n$ then 163
+161 next x
+162 goto 155
+163 n(t) = x
+164 for z = m to len(a$)
+165 if mid$(a$, z, 1) = " " then 167
+166 next z
+167 t = t + 1
+168 m = z
+169 if t > 2 then 171
+170 goto 155
+171 if t <> 1 then 174
+172 print "I don't understand that!"
+173 goto 21
+174 n(1) = n(1) - 24
+175 rem print n(1);n(2)
+176 if n(1) = 14 or n(1) = 13 then n(1) = 12
+177 if n(1) < 1 then 172
+178 if a = 11 then c(10, 1) = 0
+179 if a = 11 then c(12, 1) = 0
+180 rem closesecret rooms
+181 if a = 2 then j = 1
+182 if a = 50 then c(22, 1) = 53
+183 if a = 50 then c(45, 1) = 31
+184 if p(24) <> 17 then fu = 1
+185 if fu = 1 and p(24) = 17 then c(17, 4) = 12
+186 if a = 49 then c(48, 4) = 49
+187 if n(1) = 27 then n(1) = 10
+188 if n(1) = 26 then 486
+189 if n(1) = 15 then n(1) = 16
+190 if n(1) > 27 then n(1) = n(1) - 27
+191 if n(1) < 15 then 195
+192 if n(1) > 16 then print "How?"
+193 if n(1) < 17 then print "How destructive!!"
+194 goto 138
+195 rem
+196 if n(1) < 7 or n(1) > 9 then 211
+197 on n(1) - 6 goto 198, 200, 210
+198 r = 0
+199 goto 21
+200 print "You are carrying "
+201 v = 0
+202 for l = 7 to 24
+203 if p(l) = - 1 then v = v + 1
+204 next l
+205 if v = 0 then print "Nothing." : goto 209
+206 for l = 7 to 24
+207 if p(l) = - 1 then gosub 425
+208 next l
+209 goto 21
+210 goto 335
+211 for z = 1 to 6
+212 if p(z) = a then 215
+213 next z
+214 goto 228
+215 if n(2) = 20 then 228
+216 if z = 5 then goto 223
+217 restore
+218 for mo = 1 to z
+219 read k$
+220 next mo
+221 print "Auuuugh... You've just been killed by a " : print k$
+222 goto 335
+223 print "The rusty drone picked you up and carried you to another place."
+224 a = 33
+225 r = 0
+226 p(5) = p(5) + 7
+227 goto 21
+228 if n(1) > 4 then 242
+229 if p(8) = - 1 or p(8) = a then 232
+230 n(1) = int(rnd(1) * 4 + 1)
+231 rem
+232 b = c(a, n(1))
+233 if b = 0 then print "You cant go that way."
+234 if b = 128 then print "The plexiglass cracks then shatters. You are sucked out into space."
+235 if b = 129 then print "You fall down the shaft and are killed."
+236 if b = 130 then print "You step into the air-lock. The second air-lock door opens and"
+237 if b = 130 then print "You are sucked out into space."
+238 if b > 127 then 335
+239 if b > 0 then a = b
+240 r = 0
+241 goto 21
+242 if n(1) <> 5 then 257
+243 if n(1) <> 5 then 257
+244 r = 0
+245 if a = 16 and p(17) = - 1 then 250
+246 a = 16
+247 print "Suddenly.. The room vanishes from before you."
+248 for de = 1 to 1000: next de
+249 goto 21
+250 print "Enter destination code"
+251 input co$
+252 if left$(co$, 1) = "y" then a = 1: goto 247
+253 if left$(co$, 1) = "b" then a = 31: goto 247
+254 if left$(co$, 1) = "c" then a = 41: goto 247
+255 goto 21
+256 goto 247
+257 if n(1) <> 6 then 260
+258 rem
+259 goto 21
+260 if n(2) < 1 then 172
+261 if p(n(2)) = - 1 or p(n(2)) = a then 264
+262 print "Where? I can't see it."
+263 goto 21
+264 on n(1) - 9 goto 265, 274, 276
+265 n = 1
+266 for x = 1 to 24
+267 if p(x) = - 1 then n = n + 1
+268 next x
+269 if n < 12 then 272
+270 print "You are carrying too many objects."
+271 goto 21
+272 p(n(2)) = - 1
+273 goto 136
+274 p(n(2)) = a
+275 goto 136
+276 if n(2) > 17 and n(2) < 23 then 279
+277 print "Nothing happens!"
+278 goto 136
+279 on n(2) - 17 goto 311, 280, 289, 277, 326
+280 if a = 2 or a = 27 then 283
+281 print "It won't open"
+282 goto 21
+283 print "You opened the door."
+284 p(n(2)) = a
+285 r = 0
+286 if a = 2 then a = 1
+287 if a = 27 then a = 54
+288 goto 21
+289 if z < 7 then 292
+290 print "There's nothing to destroy!"
+291 goto 21
+292 f = f + 1
+293 rem * * * * modificati on was 15
+294 if rnd(1) * 7 + 10 > f then 297
+295 print "You shoot at it and miss. The machine deals you a fatal wound."
+296 goto 335
+297 if rnd(1) < .38 then 306
+298 l = int(rnd(1) * 4)
+299 if z = 5 then goto 223
+300 if l = 0 then print "You fire at the machine but it moves aside."
+301 if l = 1 then print "The machine is damaged but it attacks again."
+302 if l = 2 then print "The shot damages the machine slightly. It attacks again."
+303 if l = 3 then print "You missed and it fights back with a logical calmness that"
+304 if l = 3 then print "Alarms you."
+305 goto 21
+306 print "The shot is well aimed and the machine scuttles away, badly damaged."
+307 p(n(2)) = - 1
+308 if z = 3 or z = 5 then p(z) = p(z) + 10
+309 if p(z) = a then p(z) = 0
+310 goto 21
+311 if p(9) = - 1 or p(9) = a then 315
+312 print "That won't burn, dummy!! In fact, the match went out."
+313 mat = 0
+314 goto 21
+315 if mat = 1 then 318
+316 print "But the match is out, stupid!!"
+317 goto 21
+318 print "The fuse burnt away and... Boom!!... The explosion blew you out of the way!!"
+319 r = 0
+320 if a = 2 then c(a, 2) = 1
+321 if a = 51 then c(a, 1) = 130
+322 if a > 1 then a = a - 1
+323 if a = 20 then c(20, 3) = 19
+324 p(9) = 0
+325 goto 21
+326 if a = 28 then 329
+327 print "It's too dangerous!!!"
+328 goto 21
+329 print "You descend the rope, but it drops 10 feet short of the floor."
+330 print "You jump the rest of the way."
+331 r = 0
+332 p(n(2)) = a
+333 a = 27
+334 goto 21
+335 s = 0
+336 for x = 7 to 17
+337 if p(x) = - 1 then s = s + x - 6
+338 if p(x) = 1 then s = s + (x - 6) * 2
+339 next x
+340 print: print: print: print
+341 print "You got a score of "
+342 print s;
+344 print "In" ;u; " Moves."
+345 if a > 1 or j < 1 then 372
+346 print "You spend the next day repairing your yacht with the equipment"
+347 print "That you found on the wreck. "
+348 print "Hoping that you have been successful in repairing the yacht "
+349 print "You manoeuvre the yacht into space and engage the Hyperdrive... "
+350 for de = 1 to 4000: next de
+351 if s > 79 then 362
+352 if s < 80 then print "The yacht begins to move forward, then suddenly the drive "
+353 if s < 80 then print "Overloads and explodes blowing you into cosmic dust"
+354 poke 36878, 15
+355 for x = 255 to 128 step - 1
+356 poke 36877, x
+357 for de = 1 to 20: next de
+358 poke 36874, x
+359 next x
+360 for x = 15 to 0 step - 1 : for y = 1 to 20: next y: poke 36878, x: next x
+361 goto 372
+362 if s < 110 then print "The Hyperdrive refuses to engage, leaving you to drift in space."
+363 if s < 110 then print "Perhaps someone will hear your mayday" : goto 372
+364 if s < 126 then print "The Hyperdrive engages and the yacht moves slowly off into space."
+365 if s < 126 then print "You find that you are limited to half speed. It may take a while"
+366 if s < 126 then print "But you will get home!! " : goto 372
+367 if s = 126 then print "The alien Hyperdrive is superior to the old Hyperdrive."
+368 for x = 1 to 2000: next x
+369 if s = 126 then print ". You are able to achieve speeds greater than ever before!!"
+370 if s = 126 then print "If you sell the drive you will be one of the richest men on earth."
+371 if s = 126 then print "Congratulations!! You made it."
+372 rem
+373 print "Another adventure? (y/n)"
+374 input a$
+375 if left$ (a$, 1) = "y" then 3
+376 print "Yes or no - this is your last chance!!"
+377 input w$
+378 if left$ (w$, 1) = "y" then 3
+379 print " You have been playing Hyperdrive for"
+380 print left$(ti$, 2); " Hours " ;mid$(ti$, 3, 2); " Minutes!!"
+381 for de = 1 to 5000: next de
+382 poke 36879, 8
+383 end
+384 rem
+385 restore
+386 for x = 1 to 56
+387 read b$
+388 next x
+389 dim p(24)
+390 for x = 1 to 24
+391 read p(x)
+392 next x
+393 dim c(54, 4)
+394 for x = 1 to 54
+395 for y = 1 to 4
+396 read c(x, y)
+397 next y
+398 next x
+399 return
+400 data "drone", "'droid", "humanoid", "machine", "drone", "robot", "pump"
+401 data "compass", "bomb", "memory", "processor", "tape"
+402 data "book", "servo", "toolkit", "clock", "bracelet", "matches", "screwdriver"
+403 data "blaster", "mask", "rope", "magnet", "fuse", "north"
+404 data "south"
+405 data "west", "east", "transmat", "ape", "look", "list", "quit", "take"
+406 data "drop", "use", "using", "with", "cut", "break", "up"
+407 data "unlock", "open", "kill", "shoot", "light", "burn", "down", "jump", "read", "get", "z" , "z" , "z" , "z" , "help"
+408 data 5, 36, 42, 16, 52, 25, 37, 1, 26, 50, 50, 33, 21, 41, 19, 9, 27, 2, 19, 7, 12, 40, 34, 17
+409 data 2, 0, 0, 0, 128, 0, 128, 3, 5, 6, 2, 4, 3, 0, 3, 8
+410 data 128, 4, 128, 9, 0, 0, 3, 7, 8, 0, 6, 0, 9, 7, 10, 9, 10, 8, 5, 128, 11
+411 data 0, 5, 9, 12, 10, 128, 128, 11, 36, 17, 17, 15, 14, 0, 0, 13, 0, 16, 51, 13, 31, 26, 26, 26, 0, 29, 14, 0
+412 data 0, 0, 0, 0, 20, 19, 0, 0, 0, 0, 18, 18, 39, 0, 21, 22, 0, 20, 0, 53, 21, 0, 23, 0, 0, 22, 36, 0, 0, 36
+413 data 25, 28, 0, 24, 35, 0, 26, 15, 15, 0, 0, 0, 0, 129, 0, 0, 0, 0, 52, 0, 16, 0, 0, 128, 31, 0, 15, 30, 32
+414 data 0, 33, 0, 31, 32, 0, 0, 128, 35, 39, 0, 0, 0, 34, 25, 0, 37, 12, 23, 24, 36, 38, 38, 38
+415 data 37, 39, 39, 39, 37, 0, 40, 40
+416 data 0, 0, 39, 39, 46, 42, 41, 41, 41, 41, 43, 43, 41, 44, 42, 42, 45, 42, 46, 46, 46, 44, 46, 47
+417 data 41, 41, 42, 42, 0, 48, 45, 0, 47, 49, 45, 0, 50, 0, 0, 48, 49, 0, 0, 0, 0, 54, 14, 0, 29, 53, 0, 0
+418 data 0, 22, 0, 0, 51, 27, 0, 0
+419 rem poke 36879, 78
+420 rem poke 36869, 194
+421 print "."
+422 print "Hyperdrive"
+423 print "By Ken Stone and John Hardy"
+424 return
+425 restore
+426 for k = 1 to l
+427 read h$
+428 next k
+429 print "A" ;
+430 if l = 5 then print " rusty " ;
+431 if l = 7 then print " fuel " ;
+432 if l = 24 then print " small " ;
+433 if l = 4 then print " security " ;
+434 if l = 1 then print " service " ;
+435 if l = 3 then print " battered " ;
+436 if l = 13 then print "n interesting " ;
+437 if l = 14 then print " stabilizer " ;
+438 if l = 18 then print " box of " ;
+439 if l = 11 then print " computer " ;
+440 if l = 17 then print " transmat " ;
+441 if l = 19 then print " sonic " ;
+442 if l = 22 then print " thin and tatty " ;
+443 if l = 16 then print " digital " ;
+444 if l = 20 then print " hand-held " ;
+445 if l = 2 then print " dilapidated " ;
+446 if l = 6 then print "n old " ;
+447 if l = 8 then print " " ;
+448 if l = 9 then print " " ;
+449 if l = 10 then print " computer " ;
+450 if l = 12 then print " computer " ;
+451 if l = 15 then print " " ;
+452 if l = 21 then print " gas " ;
+453 if l = 23 then print " small " ;
+454 print h$
+455 return
+456 print "."
+457 print "Your space yacht has been damaged in a freak space accident."
+458 print "You are forced to dock with a deserted wreck in an attempt to find"
+459 print "The equipment needed to repair your yacht."
+460 print "Continue?" : input w$: print "."
+461 print "To get you started here are some commands you may use :-"
+462 print "north look list quit"
+463 print "Continue?" : input w$
+464 return
+465 print "......................"
+466 print ". Emergency          ."
+467 print ". Computer shutdown  ."
+468 print ". Procedure          ."
+469 print ".                    ."
+470 print ". Transmat into      ."
+471 print ". Computer vault and ."
+472 print ". Remove processor   ."
+473 print ". And memory cards.  ."
+474 print "......................"
+475 return
+476 if echo = 1 then return
+477 print "You are standing in an acoustically sealed room." : print: print
+478 print "Ok, what now?"
+479 input echo$
+480 print: print
+481 print echo$
+482 print: print
+483 if echo$ <> "Echo" then 479
+484 echo = 1
+485 return
+486 if a = 31 then gosub 465: goto 136
+487 if p(13) = - 1 or p(13) = a then print "A long time ago in a galaxy far, far away..." : goto 21
+488 print "What do you want to read, the brand name on your boots, perhaps?"
+489 goto 136
