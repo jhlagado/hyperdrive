@@ -3,7 +3,7 @@
 3 clr
 4 ti$ = "000000"
 5 fu = 0
-6 j = 0
+6 j = 0: dbg = 1
 7 gosub 419
 8 x = rnd( - ti)
 9 r = 0
@@ -13,7 +13,7 @@
 13 gosub 385
 14 rem poke 36869, 192: poke 36879, 25: print "."
 15 print "Instructions? y/n"
-16 input y$
+16 input y$: a$ = y$: gosub 900: y$ = a$
 17 if mid$(y$, 1, 1) = "y" then gosub 456
 18 print ". "
 19 f = 0
@@ -137,14 +137,14 @@
 137 print: print "Ok... What now?"
 138 n(1) = 0
 139 n(2) = 0
-140 input a$
+140 input a$: gosub 900
 141 if a$ = "n" then n(1) = 1: goto 175
 142 if a$ = "s" then n(1) = 2: goto 175
 143 if a$ = "w" then n(1) = 3: goto 175
 144 if a$ = "e" then n(1) = 4: goto 175
 145 if a$ = "up" then n(1) = 1: goto 175
 146 if a$ = "down" then n(1) = 1: goto 175
-147 a$ = a$ + " "
+147 a$ = a$ + " ": gosub 910
 148 rem n(1) = 0
 149 rem n(2) = 0
 150 print: print: print
@@ -155,7 +155,7 @@
 155 m = m + 1
 156 restore
 157 for x = 1 to 55
-158 read n$
+158 read n$: if x = 25 or x = 31 then gosub 920
 159 if m + len(n$) > len(a$) then 171
 160 if mid$(a$, m, len(n$)) = n$ then 163
 161 next x
@@ -248,7 +248,7 @@
 248 for de = 1 to 1000: next de
 249 goto 21
 250 print "Enter destination code"
-251 input co$
+251 input co$: a$ = co$: gosub 900: co$ = a$
 252 if left$(co$, 1) = "y" then a = 1: goto 247
 253 if left$(co$, 1) = "b" then a = 31: goto 247
 254 if left$(co$, 1) = "c" then a = 41: goto 247
@@ -370,10 +370,10 @@
 371 if s = 126 then print "Congratulations!! You made it."
 372 rem
 373 print "Another adventure? (y/n)"
-374 input a$
+374 input a$: gosub 900
 375 if left$ (a$, 1) = "y" then 3
 376 print "Yes or no - this is your last chance!!"
-377 input w$
+377 input w$: a$ = w$: gosub 900: w$ = a$
 378 if left$ (w$, 1) = "y" then 3
 379 print " You have been playing Hyperdrive for"
 380 print left$(ti$, 2); " Hours " ;mid$(ti$, 3, 2); " Minutes!!"
@@ -456,10 +456,10 @@
 457 print "Your space yacht has been damaged in a freak space accident."
 458 print "You are forced to dock with a deserted wreck in an attempt to find"
 459 print "The equipment needed to repair your yacht."
-460 print "Continue?" : input w$: print "."
+460 print "Continue?" : input w$: a$ = w$: gosub 900: w$ = a$: print "."
 461 print "To get you started here are some commands you may use :-"
 462 print "north look list quit"
-463 print "Continue?" : input w$
+463 print "Continue?" : input w$: a$ = w$: gosub 900: w$ = a$
 464 return
 465 print "......................"
 466 print ". Emergency          ."
@@ -475,14 +475,28 @@
 476 if echo = 1 then return
 477 print "You are standing in an acoustically sealed room." : print: print
 478 print "Ok, what now?"
-479 input echo$
+479 input echo$: a$ = echo$: gosub 900: echo$ = a$
 480 print: print
 481 print echo$
 482 print: print
-483 if echo$ <> "Echo" then 479
+483 if echo$ <> "echo" then 479
 484 echo = 1
 485 return
 486 if a = 31 then gosub 465: goto 136
 487 if p(13) = - 1 or p(13) = a then print "A long time ago in a galaxy far, far away..." : goto 21
 488 print "What do you want to read, the brand name on your boots, perhaps?"
 489 goto 136
+900 q = 1
+901 if q > len(a$) then return
+902 o = asc(mid$(a$, q, 1))
+903 if o > 64 and o < 91 then a$ = left$(a$, q - 1) + chr$(o + 32) + mid$(a$, q + 1)
+904 if o > 192 and o < 219 then a$ = left$(a$, q - 1) + chr$(o - 96) + mid$(a$, q + 1)
+905 q = q + 1: goto 901
+910 if dbg <> 1 then return
+911 print "DBG A$="; a$
+912 for dq = 1 to len(a$): print asc(mid$(a$, dq, 1)); : next dq
+913 print: return
+920 if dbg <> 1 then return
+921 print "DBG N$="; n$
+922 for dq = 1 to len(n$): print asc(mid$(n$, dq, 1)); : next dq
+923 print: return

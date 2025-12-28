@@ -12,89 +12,89 @@
 12 mat = 1
 13 gosub 385
 14 rem poke 36869, 192: poke 36879, 25: print "."
-15 print "инструцтионс? ы/н"
-16 input y$
-17 if mid$(y$, 1, 1) = "ы" then gosub 456
+15 print "иnstructions? y/n"
+16 input y$: a$ = y$: gosub 900: y$ = a$
+17 if mid$(y$, 1, 1) = "y" then gosub 456
 18 print ". "
 19 f = 0
 20 u = 0
 21 if r = 1 then 136
 22 if a < 18 or can = 1 and (p(21) = a or p(21) = - 1) then 25
-23 print "ыоу цант бреатхе!! тхе аир ис поисонед бы фумес."
+23 print "ыou cant breathe!! тhe air is poisoned by fumes."
 24 goto 136
 25 rem print a
-26 g$ = "ыоу аре ин а цорридор йунцтион."
-27 if a = 1 then g$ = "ыоу аре ин ыоур спаце ыацхт, вхицх ис доцкед витх тхе гиант спаце вре"
-28 if a = 1 then g$ = g$ + "цк. то тхе нортх ис ан аир-лоцк. ит ис опен."
-29 if a = 2 then g$ = "ыоу хаже ентеред тхе доцкинг баы оф тхе цруисер. тхе ареа ис димлы л"
-30 if a = 2 then g$ = g$ + "ит бы лигхт фром дистант старс. тхе аир-лоцк хас цлосед анд тхе ел"
-31 if a = 2 then g$ = g$ + "ецтрониц лоцк хас енгагед. а пассаге леадс еаст."
-32 if a = 3 or a = 4 then g$ = "сежерал цорридорс интерсецт хере. "
-33 if a = 3 then g$ = g$ + "стревн ароунд тхе флоор аре пиецес оф брокен мацхинеры. тхе цоррид"
-34 if a = 3 then g$ = g$ + "ор ис лит бы тхе емергенцы лампс, форежер дравинг тхеир повер фром "
-35 if a = 3 then g$ = g$ + "тхе солар стацкс."
-36 if a = 4 then g$ = g$ + "соме цаблес хаже беен сежеред анд аре хангинг, дангероуслы, фром "
-37 if a = 4 then g$ = g$ + "тхе цеилинг."
-38 if a = 5 then g$ = "ыоу аре ин а смалл обсержатион порт. тхе нортх анд вест валлс аре мад"
-39 if a = 5 then g$ = g$ + "е оф а гласс-лике материал. ит ис сховинг сигнс оф стресс."
-40 if a = 6 then g$ = "ыоу аре ин а сержице туннел. тхере ис а поол оф оил он тхе флоор."
-41 if a = 8 then g$ = "тхис ис а маин цорридор йунцтион."
-42 if a = 6 then g$ = "ыоу аре ин а сержице туннел. сомеоне хас риппед тхе цаблес анд еяуипмент"
-43 if a = 6 then g$ = g$ + " фром тхе валлс анд манглед тхем."
-44 if a = 7 then g$ = "ыоу аре ин а сержице туннел. а поол оф оил ис он тхе флоор."
-45 if a = 9 then g$ = "ыоу аре ин ан обсержатион порт. тхроугх тхе еастерн валл ыоу цан сее "
-46 if a = 9 then g$ = g$ + "тхе дистант емеры небула."
-47 if a = 10 then g$ = "нов ыоу аре ин ан аццесс цхамбер. то тхе нортх ис а флимсы ладдер "
-48 if a = 10 then g$ = g$ + "леадинг упвардс."
-49 if a = 11 then g$ = "ыоу аре он тхе ладдер ин а плеьигласс обсержатион тубе, вхицх ис усе"
-50 if a = 11 then g$ = g$ + "д то сержице тхе стабилизер ретрос."
-51 if a = 12 then g$ = "ыоу аре стандинг ат тхе топ оф а ладдер. а пассаге леадс соутх."
-52 if a = 13 then g$ = "еяуипмент линес тхе валлс. тхис роом ис тхе релаы статион бетвеен тхе "
-53 if a = 13 then g$ = g$ + "уппер анд ловер децкс оф тхе цруисер."
-54 if a = 14 then g$ = "ыоу аре ин а дарк роом. то тхе вест ис а роом маркед 'трансмат'."
-55 if a = 15 then g$ = "ыоу аре ин а лонг, димлы лит пассаге. тхе аир смеллс оф озоне."
-56 if a = 16 then g$ = ". ыоу аре стандинг ин а смалл метал баы. ин фронт оф ыоу аре сежерал "
-57 if a = 16 then g$ = g$ + "цомпутер банкс оне оф тхем беаринг тхе ворд . трансмат."
-58 if a = 17 then g$ = "тхис ис ан есцапе под. то ацтижате ит ыоу неед то кнов а сецрет цоде"
-59 if a = 18 then g$ = "бефоре ыоу лоомс оне оф тхе цруисер'с варп енгинес. ит ис ундамагед."
-60 if a = 19 then g$ = "ыоу аре ин тхе маинтенанце ворксхоп."
-61 if a = 20 or a = 34 then g$ = "тхе варп енгине стретцхес аваы то тхе соутх."
-62 if a > 20 and a < 26 then g$ = "ыоу аре ин а лонг, дарк цорридор."
-63 if a = 27 then g$ = "ыоу аре ин а смалл роом. тхере ис но ваы оут."
-64 if a = 28 then g$ = "ыоу аре он а ледге ожерлоокинг а дееп схафт."
-65 if a = 30 then g$ = "ыоу аре он тхе бридге оф тхе цруисер."
-66 if a = 31 then g$ = "ыоу аре он тхе бридге. бефоре ыоу ис а ларге цхарт."
-67 if a = 32 then g$ = "тхе мануал цонтролс оф тхе цруисер лине тхе валлс."
-68 if a = 33 then g$ = g$ + ". бефоре ыоу ис а смалл цомпутер терминал лабеллед "
-69 if a = 33 then g$ = g$ + ". флигхт цомпутер. ит сеемс тоо смалл фор суцх а таск. соме оф итс"
-70 if a = 33 then g$ = g$ + " цирцуит цардс аре миссинг."
-71 if a = 35 then g$ = "бефоре ыоу лоомс а варп енгине. ит хас беен бурнт оут."
-72 if a = 37 then g$ = "хере тхе маин цорридор ендс. фром ит бранцх тхрее аццесс туннелс."
-73 if a = 38 then g$ = ".. ыоу аре цравлинг тхроугх а лонг, дарк виринг цондуит. тхе сурфацес "
-74 if a = 38 then g$ = g$ + " аре цожеред ин схарп рижетс тхат маке цравлинг агонизинг."
-75 if a = 39 then g$ = "бефоре ыоу лоомс оне оф тхе варп енгинес. ит стретцхес аваы то тхе "
-76 if a = 39 then g$ = g$ + "нортх."
-77 if a = 40 then g$ = "ыоу аре ин а лонг еаст-вест аццесс туннел."
-78 if a = 42 then g$ = g$ + " ыоу аре валкинг ин цирцлес."
-79 if a = 43 then g$ = "ыоу аре ат анотхер цорридор йунцтион."
-80 if a = 45 then g$ = "тхе цорридорс аре цхангинг бефоре ыоур жеры еыес!"
-81 if a = 46 then g$ = "ыоу аре ин ан ендлесс пассаге. тхе силенце ис террифыинг..."
-82 if a = 47 then g$ = "ыоу аре стандинг ин ан ацоустицаллы сеалед роом."
+26 g$ = "ыou are in a corridor junction."
+27 if a = 1 then g$ = "ыou are in your space yacht, which is docked with the giant space wre"
+28 if a = 1 then g$ = g$ + "ck. тo the north is an air-lock. иt is open."
+29 if a = 2 then g$ = "ыou have entered the docking bay of the cruiser. тhe area is dimly l"
+30 if a = 2 then g$ = g$ + "it by light from distant stars. тhe air-lock has closed and the el"
+31 if a = 2 then g$ = g$ + "ectronic lock has engaged. а passage leads east."
+32 if a = 3 or a = 4 then g$ = "сeveral corridors intersect here. "
+33 if a = 3 then g$ = g$ + "сtrewn around the floor are pieces of broken machinery. тhe corrid"
+34 if a = 3 then g$ = g$ + "or is lit by the emergency lamps, forever drawing their power from "
+35 if a = 3 then g$ = g$ + "the solar stacks."
+36 if a = 4 then g$ = g$ + "сome cables have been severed and are hanging, dangerously, from "
+37 if a = 4 then g$ = g$ + "the ceiling."
+38 if a = 5 then g$ = "ыou are in a small observation port. тhe north and west walls are mad"
+39 if a = 5 then g$ = g$ + "e of a glass-like material. иt is showing signs of stress."
+40 if a = 6 then g$ = "ыou are in a service tunnel. тhere is a pool of oil on the floor."
+41 if a = 8 then g$ = "тhis is a main corridor junction."
+42 if a = 6 then g$ = "ыou are in a service tunnel. сomeone has ripped the cables and equipment"
+43 if a = 6 then g$ = g$ + " from the walls and mangled them."
+44 if a = 7 then g$ = "ыou are in a service tunnel. а pool of oil is on the floor."
+45 if a = 9 then g$ = "ыou are in an observation port. тhrough the eastern wall you can see "
+46 if a = 9 then g$ = g$ + "the distant emery nebula."
+47 if a = 10 then g$ = "нow you are in an access chamber. тo the north is a flimsy ladder "
+48 if a = 10 then g$ = g$ + "leading upwards."
+49 if a = 11 then g$ = "ыou are on the ladder in a plexiglass observation tube, which is use"
+50 if a = 11 then g$ = g$ + "d to service the stabilizer retros."
+51 if a = 12 then g$ = "ыou are standing at the top of a ladder. а passage leads south."
+52 if a = 13 then g$ = "еquipment lines the walls. тhis room is the relay station between the "
+53 if a = 13 then g$ = g$ + "upper and lower decks of the cruiser."
+54 if a = 14 then g$ = "ыou are in a dark room. тo the west is a room marked 'тransmat'."
+55 if a = 15 then g$ = "ыou are in a long, dimly lit passage. тhe air smells of ozone."
+56 if a = 16 then g$ = ". ыou are standing in a small metal bay. иn front of you are several "
+57 if a = 16 then g$ = g$ + "computer banks one of them bearing the word . тransmat."
+58 if a = 17 then g$ = "тhis is an escape pod. тo activate it you need to know a secret code"
+59 if a = 18 then g$ = "бefore you looms one of the cruiser's warp engines. иt is undamaged."
+60 if a = 19 then g$ = "ыou are in the maintenance workshop."
+61 if a = 20 or a = 34 then g$ = "тhe warp engine stretches away to the south."
+62 if a > 20 and a < 26 then g$ = "ыou are in a long, dark corridor."
+63 if a = 27 then g$ = "ыou are in a small room. тhere is no way out."
+64 if a = 28 then g$ = "ыou are on a ledge overlooking a deep shaft."
+65 if a = 30 then g$ = "ыou are on the bridge of the cruiser."
+66 if a = 31 then g$ = "ыou are on the bridge. бefore you is a large chart."
+67 if a = 32 then g$ = "тhe manual controls of the cruiser line the walls."
+68 if a = 33 then g$ = g$ + ". бefore you is a small computer terminal labelled "
+69 if a = 33 then g$ = g$ + ". фlight computer. иt seems too small for such a task. сome of its"
+70 if a = 33 then g$ = g$ + " circuit cards are missing."
+71 if a = 35 then g$ = "бefore you looms a warp engine. иt has been burnt out."
+72 if a = 37 then g$ = "хere the main corridor ends. фrom it branch three access tunnels."
+73 if a = 38 then g$ = ".. ыou are crawling through a long, dark wiring conduit. тhe surfaces "
+74 if a = 38 then g$ = g$ + " are covered in sharp rivets that make crawling agonizing."
+75 if a = 39 then g$ = "бefore you looms one of the warp engines. иt stretches away to the "
+76 if a = 39 then g$ = g$ + "north."
+77 if a = 40 then g$ = "ыou are in a long east-west access tunnel."
+78 if a = 42 then g$ = g$ + " ыou are walking in circles."
+79 if a = 43 then g$ = "ыou are at another corridor junction."
+80 if a = 45 then g$ = "тhe corridors are changing before your very eyes!"
+81 if a = 46 then g$ = "ыou are in an endless passage. тhe silence is terrifying..."
+82 if a = 47 then g$ = "ыou are standing in an acoustically sealed room."
 83 if a = 47 then gosub 476
-84 if a = 48 then g$ = "бефоре ыоу ис ан елецтрониц мине фиелд... оне фалсе степ вилл бе фатал."
-85 if a = 49 then g$ = "ыоу суржижед тхе мине фиелд анд хаже стумблед инто а дименсионал вар"
-86 if a = 49 then g$ = g$ + "п. нотхинг аппеарс то бе вхере ит ис. а пассаге леадс соутх."
-87 if a = 50 then g$ = "ыоу хаже пенетратед тхе цомпутер цомплеь. "
+84 if a = 48 then g$ = "бefore you is an electronic mine field... оne false step will be fatal."
+85 if a = 49 then g$ = "ыou survived the mine field and have stumbled into a dimensional war"
+86 if a = 49 then g$ = g$ + "p. нothing appears to be where it is. а passage leads south."
+87 if a = 50 then g$ = "ыou have penetrated the computer complex. "
 88 if a = 50 and p(11) = 50 then poke 36878, 15: poke 36876, 210: poke 36877, 254
-89 if a = 50 and p(11) = 50 then g$ = g$ + "тхе сониц протецтион сыстем ис цонфусинг ыоур тхоугхтс"
+89 if a = 50 and p(11) = 50 then g$ = g$ + "тhe sonic protection system is confusing your thoughts"
 90 if a = 50 and p(11) = 50 then tr = tr + 1
-91 if tr > 1 then print "ыоур браинс хаже беен сцрамблед бы пролонгед еьпосуре то сониц"
-92 if tr > 1 then print "жибратионс. ыоу алмост маде ит!" : goto 335
-93 if a = 51 then g$ = "тхере ис а хеажы ирон доор то тхе нортх."
-94 if a = 53 then g$ = ". ыоу аре ин а смалл обсержатион буббле. фром хере ыоу цан сее ыоур ыац"
-95 if a = 53 then g$ = g$ + "хт ин тхе доцкинг баы. тхе дамаге то тхе ыацхт аппеарс то бе минор"
-96 if a = 52 or a = 54 then g$ = "ыоу аре ин а лонг димлы лит пассаге. "
-97 if a = 54 then g$ = g$ + "тхере ис а боды он тхе флоор. ит хас беен схот."
+91 if tr > 1 then print "ыour brains have been scrambled by prolonged exposure to sonic"
+92 if tr > 1 then print "жibrations. ыou almost made it!" : goto 335
+93 if a = 51 then g$ = "тhere is a heavy iron door to the north."
+94 if a = 53 then g$ = ". ыou are in a small observation bubble. фrom here you can see your yac"
+95 if a = 53 then g$ = g$ + "ht in the docking bay. тhe damage to the yacht appears to be minor"
+96 if a = 52 or a = 54 then g$ = "ыou are in a long dimly lit passage. "
+97 if a = 54 then g$ = g$ + "тhere is a body on the floor. иt has been shot."
 98 x = 1
 99 if g$ = "" then g$ = " "
 100 h = x + 20
@@ -106,19 +106,19 @@
 106 if h = len(g$) then 109
 107 x = h + 1
 108 goto 100
-109 if a = 10 and c(a, 1) = 0 then print "ит ис тоо дамагед то цлимб"
-110 if a = 12 and c(a, 1) = 0 then print "тхе ладдер хас брокен фрее анд цоллапсед."
+109 if a = 10 and c(a, 1) = 0 then print "иt is too damaged to climb"
+110 if a = 12 and c(a, 1) = 0 then print "тhe ladder has broken free and collapsed."
 111 rem if a = 48 and c(a, 4) = 128 then print "."
-112 if u > 200 then print "ыоур оьыген ис руннинг оут."
+112 if u > 200 then print "ыour oxygen is running out."
 113 if u < 230 then 116
 114 can = 0
-115 print "ин фацт ыоу хаже рун оут!"
+115 print "иn fact you have run out!"
 116 v = 0
 117 for l = 7 to 24
 118 if p(l) = a then v = v + 1
 119 next l
 120 if v = 0 then 125
-121 print "ыоу цан алсо сее:"
+121 print "ыou can also see:"
 122 for l = 7 to 24
 123 if p(l) = a then gosub 425
 124 next l
@@ -128,22 +128,22 @@
 128 next l
 129 if v = 0 then 135
 130 print
-131 print "неарбы тхере луркс"
+131 print "нearby there lurks"
 132 for l = 1 to 6
 133 if p(l) = a then gosub 425
 134 next l
 135 r = 1
 136 if a <> 50 or p(11) <> 50 then poke 36878, 0: poke 36877, 0: poke 36876, 0
-137 print: print "ок... вхат нов?"
+137 print: print "оk... вhat now?"
 138 n(1) = 0
 139 n(2) = 0
-140 input a$
-141 if a$ = "н" then n(1) = 1: goto 175
-142 if a$ = "с" then n(1) = 2: goto 175
-143 if a$ = "в" then n(1) = 3: goto 175
-144 if a$ = "е" then n(1) = 4: goto 175
-145 if a$ = "уп" then n(1) = 1: goto 175
-146 if a$ = "довн" then n(1) = 1: goto 175
+140 input a$: gosub 900
+141 if a$ = "n" then n(1) = 1: goto 175
+142 if a$ = "s" then n(1) = 2: goto 175
+143 if a$ = "w" then n(1) = 3: goto 175
+144 if a$ = "e" then n(1) = 4: goto 175
+145 if a$ = "up" then n(1) = 1: goto 175
+146 if a$ = "down" then n(1) = 1: goto 175
 147 a$ = a$ + " "
 148 rem n(1) = 0
 149 rem n(2) = 0
@@ -169,7 +169,7 @@
 169 if t > 2 then 171
 170 goto 155
 171 if t <> 1 then 174
-172 print "и дон'т ундерстанд тхат!"
+172 print "и don't understand that!"
 173 goto 21
 174 n(1) = n(1) - 24
 175 rem print n(1);n(2)
@@ -189,20 +189,20 @@
 189 if n(1) = 15 then n(1) = 16
 190 if n(1) > 27 then n(1) = n(1) - 27
 191 if n(1) < 15 then 195
-192 if n(1) > 16 then print "хов?"
-193 if n(1) < 17 then print "хов деструцтиже!!"
+192 if n(1) > 16 then print "хow?"
+193 if n(1) < 17 then print "хow destructive!!"
 194 goto 138
 195 rem
 196 if n(1) < 7 or n(1) > 9 then 211
 197 on n(1) - 6 goto 198, 200, 210
 198 r = 0
 199 goto 21
-200 print "ыоу аре царрыинг "
+200 print "ыou are carrying "
 201 v = 0
 202 for l = 7 to 24
 203 if p(l) = - 1 then v = v + 1
 204 next l
-205 if v = 0 then print "нотхинг." : goto 209
+205 if v = 0 then print "нothing." : goto 209
 206 for l = 7 to 24
 207 if p(l) = - 1 then gosub 425
 208 next l
@@ -218,9 +218,9 @@
 218 for mo = 1 to z
 219 read k$
 220 next mo
-221 print "ауууугх... ыоу'же йуст беен киллед бы а " : print k$
+221 print "аuuuugh... ыou've just been killed by a " : print k$
 222 goto 335
-223 print "тхе русты дроне пицкед ыоу уп анд царриед ыоу то анотхер плаце."
+223 print "тhe rusty drone picked you up and carried you to another place."
 224 a = 33
 225 r = 0
 226 p(5) = p(5) + 7
@@ -230,11 +230,11 @@
 230 n(1) = int(rnd(1) * 4 + 1)
 231 rem
 232 b = c(a, n(1))
-233 if b = 0 then print "ыоу цант го тхат ваы."
-234 if b = 128 then print "тхе плеьигласс црацкс тхен схаттерс. ыоу аре суцкед оут инто спаце."
-235 if b = 129 then print "ыоу фалл довн тхе схафт анд аре киллед."
-236 if b = 130 then print "ыоу степ инто тхе аир-лоцк. тхе сецонд аир-лоцк доор опенс анд"
-237 if b = 130 then print "ыоу аре суцкед оут инто спаце."
+233 if b = 0 then print "ыou cant go that way."
+234 if b = 128 then print "тhe plexiglass cracks then shatters. ыou are sucked out into space."
+235 if b = 129 then print "ыou fall down the shaft and are killed."
+236 if b = 130 then print "ыou step into the air-lock. тhe second air-lock door opens and"
+237 if b = 130 then print "ыou are sucked out into space."
 238 if b > 127 then 335
 239 if b > 0 then a = b
 240 r = 0
@@ -244,14 +244,14 @@
 244 r = 0
 245 if a = 16 and p(17) = - 1 then 250
 246 a = 16
-247 print "судденлы.. тхе роом жанисхес фром бефоре ыоу."
+247 print "сuddenly.. тhe room vanishes from before you."
 248 for de = 1 to 1000: next de
 249 goto 21
-250 print "ентер дестинатион цоде"
-251 input co$
-252 if left$(co$, 1) = "ы" then a = 1: goto 247
-253 if left$(co$, 1) = "б" then a = 31: goto 247
-254 if left$(co$, 1) = "ц" then a = 41: goto 247
+250 print "еnter destination code"
+251 input co$: a$ = co$: gosub 900: co$ = a$
+252 if left$(co$, 1) = "y" then a = 1: goto 247
+253 if left$(co$, 1) = "b" then a = 31: goto 247
+254 if left$(co$, 1) = "c" then a = 41: goto 247
 255 goto 21
 256 goto 247
 257 if n(1) <> 6 then 260
@@ -259,7 +259,7 @@
 259 goto 21
 260 if n(2) < 1 then 172
 261 if p(n(2)) = - 1 or p(n(2)) = a then 264
-262 print "вхере? и цан'т сее ит."
+262 print "вhere? и can't see it."
 263 goto 21
 264 on n(1) - 9 goto 265, 274, 276
 265 n = 1
@@ -267,55 +267,55 @@
 267 if p(x) = - 1 then n = n + 1
 268 next x
 269 if n < 12 then 272
-270 print "ыоу аре царрыинг тоо маны обйецтс."
+270 print "ыou are carrying too many objects."
 271 goto 21
 272 p(n(2)) = - 1
 273 goto 136
 274 p(n(2)) = a
 275 goto 136
 276 if n(2) > 17 and n(2) < 23 then 279
-277 print "нотхинг хаппенс!"
+277 print "нothing happens!"
 278 goto 136
 279 on n(2) - 17 goto 311, 280, 289, 277, 326
 280 if a = 2 or a = 27 then 283
-281 print "ит вон'т опен"
+281 print "иt won't open"
 282 goto 21
-283 print "ыоу опенед тхе доор."
+283 print "ыou opened the door."
 284 p(n(2)) = a
 285 r = 0
 286 if a = 2 then a = 1
 287 if a = 27 then a = 54
 288 goto 21
 289 if z < 7 then 292
-290 print "тхере'с нотхинг то дестроы!"
+290 print "тhere's nothing to destroy!"
 291 goto 21
 292 f = f + 1
 293 rem * * * * modificati on was 15
 294 if rnd(1) * 7 + 10 > f then 297
-295 print "ыоу схоот ат ит анд мисс. тхе мацхине деалс ыоу а фатал воунд."
+295 print "ыou shoot at it and miss. тhe machine deals you a fatal wound."
 296 goto 335
 297 if rnd(1) < .38 then 306
 298 l = int(rnd(1) * 4)
 299 if z = 5 then goto 223
-300 if l = 0 then print "ыоу фире ат тхе мацхине бут ит можес асиде."
-301 if l = 1 then print "тхе мацхине ис дамагед бут ит аттацкс агаин."
-302 if l = 2 then print "тхе схот дамагес тхе мацхине слигхтлы. ит аттацкс агаин."
-303 if l = 3 then print "ыоу миссед анд ит фигхтс бацк витх а логицал цалмнесс тхат"
-304 if l = 3 then print "алармс ыоу."
+300 if l = 0 then print "ыou fire at the machine but it moves aside."
+301 if l = 1 then print "тhe machine is damaged but it attacks again."
+302 if l = 2 then print "тhe shot damages the machine slightly. иt attacks again."
+303 if l = 3 then print "ыou missed and it fights back with a logical calmness that"
+304 if l = 3 then print "аlarms you."
 305 goto 21
-306 print "тхе схот ис велл аимед анд тхе мацхине сцуттлес аваы, бадлы дамагед."
+306 print "тhe shot is well aimed and the machine scuttles away, badly damaged."
 307 p(n(2)) = - 1
 308 if z = 3 or z = 5 then p(z) = p(z) + 10
 309 if p(z) = a then p(z) = 0
 310 goto 21
 311 if p(9) = - 1 or p(9) = a then 315
-312 print "тхат вон'т бурн, думмы!! ин фацт, тхе матцх вент оут."
+312 print "тhat won't burn, dummy!! иn fact, the match went out."
 313 mat = 0
 314 goto 21
 315 if mat = 1 then 318
-316 print "бут тхе матцх ис оут, ступид!!"
+316 print "бut the match is out, stupid!!"
 317 goto 21
-318 print "тхе фусе бурнт аваы анд... боом!!... тхе еьплосион блев ыоу оут оф тхе ваы!!"
+318 print "тhe fuse burnt away and... бoom!!... тhe explosion blew you out of the way!!"
 319 r = 0
 320 if a = 2 then c(a, 2) = 1
 321 if a = 51 then c(a, 1) = 130
@@ -324,10 +324,10 @@
 324 p(9) = 0
 325 goto 21
 326 if a = 28 then 329
-327 print "ит'с тоо дангероус!!!"
+327 print "иt's too dangerous!!!"
 328 goto 21
-329 print "ыоу десценд тхе ропе, бут ит дропс 10 феет схорт оф тхе флоор."
-330 print "ыоу йумп тхе рест оф тхе ваы."
+329 print "ыou descend the rope, but it drops 10 feet short of the floor."
+330 print "ыou jump the rest of the way."
 331 r = 0
 332 p(n(2)) = a
 333 a = 27
@@ -338,18 +338,18 @@
 338 if p(x) = 1 then s = s + (x - 6) * 2
 339 next x
 340 print: print: print: print
-341 print "ыоу гот а сцоре оф "
+341 print "ыou got a score of "
 342 print s;
-344 print "ин" ;u; " можес."
+344 print "иn" ;u; " мoves."
 345 if a > 1 or j < 1 then 372
-346 print "ыоу спенд тхе неьт даы репаиринг ыоур ыацхт витх тхе еяуипмент"
-347 print "тхат ыоу фоунд он тхе врецк. "
-348 print "хопинг тхат ыоу хаже беен суццессфул ин репаиринг тхе ыацхт "
-349 print "ыоу маноеужре тхе ыацхт инто спаце анд енгаге тхе хыпердриже... "
+346 print "ыou spend the next day repairing your yacht with the equipment"
+347 print "тhat you found on the wreck. "
+348 print "хoping that you have been successful in repairing the yacht "
+349 print "ыou manoeuvre the yacht into space and engage the хyperdrive... "
 350 for de = 1 to 4000: next de
 351 if s > 79 then 362
-352 if s < 80 then print "тхе ыацхт бегинс то може форвард, тхен судденлы тхе дриже "
-353 if s < 80 then print "ожерлоадс анд еьплодес бловинг ыоу инто цосмиц дуст"
+352 if s < 80 then print "тhe yacht begins to move forward, then suddenly the drive "
+353 if s < 80 then print "оverloads and explodes blowing you into cosmic dust"
 354 poke 36878, 15
 355 for x = 255 to 128 step - 1
 356 poke 36877, x
@@ -358,25 +358,25 @@
 359 next x
 360 for x = 15 to 0 step - 1 : for y = 1 to 20: next y: poke 36878, x: next x
 361 goto 372
-362 if s < 110 then print "тхе хыпердриже рефусес то енгаге, леажинг ыоу то дрифт ин спаце."
-363 if s < 110 then print "перхапс сомеоне вилл хеар ыоур маыдаы" : goto 372
-364 if s < 126 then print "тхе хыпердриже енгагес анд тхе ыацхт можес словлы офф инто спаце."
-365 if s < 126 then print "ыоу финд тхат ыоу аре лимитед то халф спеед. ит маы таке а вхиле"
-366 if s < 126 then print "бут ыоу вилл гет хоме!! " : goto 372
-367 if s = 126 then print "тхе алиен хыпердриже ис супериор то тхе олд хыпердриже."
+362 if s < 110 then print "тhe хyperdrive refuses to engage, leaving you to drift in space."
+363 if s < 110 then print "пerhaps someone will hear your mayday" : goto 372
+364 if s < 126 then print "тhe хyperdrive engages and the yacht moves slowly off into space."
+365 if s < 126 then print "ыou find that you are limited to half speed. иt may take a while"
+366 if s < 126 then print "бut you will get home!! " : goto 372
+367 if s = 126 then print "тhe alien хyperdrive is superior to the old хyperdrive."
 368 for x = 1 to 2000: next x
-369 if s = 126 then print ". ыоу аре абле то ацхиеже спеедс греатер тхан ежер бефоре!!"
-370 if s = 126 then print "иф ыоу селл тхе дриже ыоу вилл бе оне оф тхе рицхест мен он еартх."
-371 if s = 126 then print "цонгратулатионс!! ыоу маде ит."
+369 if s = 126 then print ". ыou are able to achieve speeds greater than ever before!!"
+370 if s = 126 then print "иf you sell the drive you will be one of the richest men on earth."
+371 if s = 126 then print "цongratulations!! ыou made it."
 372 rem
-373 print "анотхер аджентуре?"
-374 input a$
-375 if left$ (a$, 1) = "ы" then 3
-376 print "ыес ор но - тхис ис ыоур ласт цханце!!"
-377 input w$
-378 if left$ (w$, 1) = "ы" then 3
-379 print " ыоу хаже беен плаыинг хыпердриже фор"
-380 print left$(ti$, 2); " хоурс " ;mid$(ti$, 3, 2); " минутес!!"
+373 print "аnother adventure? (y/n)"
+374 input a$: gosub 900
+375 if left$ (a$, 1) = "y" then 3
+376 print "ыes or no - this is your last chance!!"
+377 input w$: a$ = w$: gosub 900: w$ = a$
+378 if left$ (w$, 1) = "y" then 3
+379 print " ыou have been playing хyperdrive for"
+380 print left$(ti$, 2); " хours " ;mid$(ti$, 3, 2); " мinutes!!"
 381 for de = 1 to 5000: next de
 382 poke 36879, 8
 383 end
@@ -396,14 +396,14 @@
 397 next y
 398 next x
 399 return
-400 data "дроне", "'дроид", "хуманоид", "мацхине", "дроне", "робот", "пумп"
-401 data "цомпасс", "бомб", "меморы", "процессор", "тапе"
-402 data "боок", "сержо", "тоол кит", "цлоцк", "брацелет", "матцхес", "сцревдрижер"
-403 data "бластер", "маск", "ропе", "магнет", "фусе", "нортх"
-404 data "соутх"
-405 data "вест", "еаст", "трансмат", "апе", "лоок", "лист", "яуит", "таке"
-406 data "дроп", "усе", "усинг", "витх", "цут", "бреак", "уп"
-407 data "унлоцк", "опен", "килл", "схоот", "лигхт", "бурн", "довн", "йумп", "реад", "гет", "з" , "з" , "з" , "з" , "хелп"
+400 data "drone", "'droid", "humanoid", "machine", "drone", "robot", "pump"
+401 data "compass", "bomb", "memory", "processor", "tape"
+402 data "book", "servo", "toolkit", "clock", "bracelet", "matches", "screwdriver"
+403 data "blaster", "mask", "rope", "magnet", "fuse", "north"
+404 data "south"
+405 data "west", "east", "transmat", "ape", "look", "list", "quit", "take"
+406 data "drop", "use", "using", "with", "cut", "break", "up"
+407 data "unlock", "open", "kill", "shoot", "light", "burn", "down", "jump", "read", "get", "z" , "z" , "z" , "z" , "help"
 408 data 5, 36, 42, 16, 52, 25, 37, 1, 26, 50, 50, 33, 21, 41, 19, 9, 27, 2, 19, 7, 12, 40, 34, 17
 409 data 2, 0, 0, 0, 128, 0, 128, 3, 5, 6, 2, 4, 3, 0, 3, 8
 410 data 128, 4, 128, 9, 0, 0, 3, 7, 8, 0, 6, 0, 9, 7, 10, 9, 10, 8, 5, 128, 11
@@ -418,71 +418,77 @@
 419 rem poke 36879, 78
 420 rem poke 36869, 194
 421 print "."
-422 print "хыпердриже"
-423 print "бы кен стоне анд йохн харды"
+422 print "хyperdrive"
+423 print "бy кen сtone and йohn хardy"
 424 return
 425 restore
 426 for k = 1 to l
 427 read h$
 428 next k
 429 print "а" ;
-430 if l = 5 then print " русты " ;
-431 if l = 7 then print " фуел " ;
-432 if l = 24 then print " смалл " ;
-433 if l = 4 then print " сецуриты " ;
-434 if l = 1 then print " сержице " ;
-435 if l = 3 then print " баттеред " ;
-436 if l = 13 then print "н интерестинг " ;
-437 if l = 14 then print " стабилизер " ;
-438 if l = 18 then print " боь оф " ;
-439 if l = 11 then print " цомпутер " ;
-440 if l = 17 then print " трансмат " ;
-441 if l = 19 then print " сониц " ;
-442 if l = 22 then print " тхин анд татты " ;
-443 if l = 16 then print " дигитал " ;
-444 if l = 20 then print " ханд-хелд " ;
-445 if l = 2 then print " дилапидатед " ;
-446 if l = 6 then print "н олд " ;
+430 if l = 5 then print " rusty " ;
+431 if l = 7 then print " fuel " ;
+432 if l = 24 then print " small " ;
+433 if l = 4 then print " security " ;
+434 if l = 1 then print " service " ;
+435 if l = 3 then print " battered " ;
+436 if l = 13 then print "n interesting " ;
+437 if l = 14 then print " stabilizer " ;
+438 if l = 18 then print " box of " ;
+439 if l = 11 then print " computer " ;
+440 if l = 17 then print " transmat " ;
+441 if l = 19 then print " sonic " ;
+442 if l = 22 then print " thin and tatty " ;
+443 if l = 16 then print " digital " ;
+444 if l = 20 then print " hand-held " ;
+445 if l = 2 then print " dilapidated " ;
+446 if l = 6 then print "n old " ;
 447 if l = 8 then print " " ;
 448 if l = 9 then print " " ;
-449 if l = 10 then print " цомпутер " ;
-450 if l = 12 then print " цомпутер " ;
+449 if l = 10 then print " computer " ;
+450 if l = 12 then print " computer " ;
 451 if l = 15 then print " " ;
-452 if l = 21 then print " гас " ;
-453 if l = 23 then print " смалл " ;
+452 if l = 21 then print " gas " ;
+453 if l = 23 then print " small " ;
 454 print h$
 455 return
 456 print "."
-457 print "ыоур спаце ыацхт хас беен дамагед ин а фреак спаце аццидент."
-458 print "ыоу аре форцед то доцк витх а десертед врецк ин ан аттемпт то финд"
-459 print "тхе еяуипмент неедед то репаир ыоур ыацхт."
-460 print "цонтинуе?" : input w$: print "."
-461 print "то гет ыоу стартед хере аре соме цоммандс ыоу маы усе :-"
-462 print "нортх лоок лист яуит"
-463 print "цонтинуе?" : input w$
+457 print "ыour space yacht has been damaged in a freak space accident."
+458 print "ыou are forced to dock with a deserted wreck in an attempt to find"
+459 print "тhe equipment needed to repair your yacht."
+460 print "цontinue?" : input w$: a$ = w$: gosub 900: w$ = a$: print "."
+461 print "тo get you started here are some commands you may use :-"
+462 print "north look list quit"
+463 print "цontinue?" : input w$: a$ = w$: gosub 900: w$ = a$
 464 return
-465 print "....................."
-466 print ". емергенцы ."
-467 print ". цомпутер схутдовн ."
-468 print ". процедуре ."
-469 print ". ."
-470 print ". трансмат инто ."
-471 print ". цомпутер жаулт анд."
-472 print ". реможе процессор ."
-473 print ". анд меморы цардс. ."
-474 print "....................."
+465 print "......................"
+466 print ". еmergency          ."
+467 print ". цomputer shutdown  ."
+468 print ". пrocedure          ."
+469 print ".                    ."
+470 print ". тransmat into      ."
+471 print ". цomputer vault and ."
+472 print ". рemove processor   ."
+473 print ". аnd memory cards.  ."
+474 print "......................"
 475 return
 476 if echo = 1 then return
-477 print "ыоу аре стандинг ин ан ацоустицаллы сеалед роом." : print: print
-478 print "ок, вхат нов?"
-479 input echo$
+477 print "ыou are standing in an acoustically sealed room." : print: print
+478 print "оk, what now?"
+479 input echo$: a$ = echo$: gosub 900: echo$ = a$
 480 print: print
 481 print echo$
 482 print: print
-483 if echo$ <> "ецхо" then 479
+483 if echo$ <> "echo" then 479
 484 echo = 1
 485 return
 486 if a = 31 then gosub 465: goto 136
-487 if p(13) = - 1 or p(13) = a then print "а лонг тиме аго ин а галаьы фар, фар аваы.." : goto 21
-488 print "вхат до ыоу вант то реад, тхе бранд наме он ыоур боотс, перхапс?"
+487 if p(13) = - 1 or p(13) = a then print "а long time ago in a galaxy far, far away..." : goto 21
+488 print "вhat do you want to read, the brand name on your boots, perhaps?"
 489 goto 136
+900 q = 1
+901 if q > len(a$) then return
+902 o = asc(mid$(a$, q, 1))
+903 if o > 64 and o < 91 then a$ = left$(a$, q - 1) + chr$(o + 32) + mid$(a$, q + 1)
+904 if o > 192 and o < 219 then a$ = left$(a$, q - 1) + chr$(o - 96) + mid$(a$, q + 1)
+905 q = q + 1: goto 901
