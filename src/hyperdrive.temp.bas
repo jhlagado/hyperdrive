@@ -1,5 +1,5 @@
 1 rem copy right micro parts, 1982
-2 print chr$(14): rem dist 10
+2 print chr$(142): rem dist 10
 3 clr
 4 ti$ = "000000"
 5 fu = 0
@@ -11,9 +11,9 @@
 11 can = 1
 12 mat = 1
 13 gosub 385
-14 print ".": rem poke 36879, 25: poke 36869, 192
+14 poke 36869, 192: poke 36879, 25: print "."
 15 print "INSTRUCTIONS? Y/N"
-16 input y$: a$ = y$: gosub 900: y$ = a$
+16 input y$
 17 if mid$(y$, 1, 1) = "Y" then gosub 456
 18 print ". "
 19 f = 0
@@ -85,7 +85,7 @@
 85 if a = 49 then g$ = "YOU SURVIVED THE MINE FIELD AND HAVE STUMBLED INTO A DIMENSIONAL WAR"
 86 if a = 49 then g$ = g$ + "P. NOTHING APPEARS TO BE WHERE IT IS. A PASSAGE LEADS SOUTH."
 87 if a = 50 then g$ = "YOU HAVE PENETRATED THE COMPUTER COMPLEX. "
-88 if a = 50 and p(11) = 50 then rem poke 36878, 15: poke 36876, 210: poke 36877, 254
+88 if a = 50 and p(11) = 50 then poke 36878, 15: poke 36876, 210: poke 36877, 254
 89 if a = 50 and p(11) = 50 then g$ = g$ + "THE SONIC PROTECTION SYSTEM IS CONFUSING YOUR THOUGHTS"
 90 if a = 50 and p(11) = 50 then tr = tr + 1
 91 if tr > 1 then print "YOUR BRAINS HAVE BEEN SCRAMBLED BY PROLONGED EXPOSURE TO SONIC"
@@ -133,18 +133,18 @@
 133 if p(l) = a then gosub 425
 134 next l
 135 r = 1
-136 if a <> 50 or p(11) <> 50 then rem poke 36878, 0: poke 36877, 0: poke 36876, 0
+136 if a <> 50 or p(11) <> 50 then poke 36878, 0: poke 36877, 0: poke 36876, 0
 137 print: print "OK... WHAT NOW?"
 138 n(1) = 0
 139 n(2) = 0
-140 input a$: gosub 900
+140 input a$
 141 if a$ = "N" then n(1) = 1: goto 175
 142 if a$ = "S" then n(1) = 2: goto 175
 143 if a$ = "W" then n(1) = 3: goto 175
 144 if a$ = "E" then n(1) = 4: goto 175
 145 if a$ = "UP" then n(1) = 1: goto 175
 146 if a$ = "DOWN" then n(1) = 1: goto 175
-147 a$ = a$ + " ": gosub 850: gosub 870
+147 a$ = a$ + " "
 148 rem n(1) = 0
 149 rem n(2) = 0
 150 print: print: print
@@ -155,7 +155,7 @@
 155 m = m + 1
 156 restore
 157 for x = 1 to 55
-158 read n$: gosub 880: if x = 31 then gosub 860
+158 read n$
 159 if m + len(n$) > len(a$) then 171
 160 if mid$(a$, m, len(n$)) = n$ then 163
 161 next x
@@ -248,7 +248,7 @@
 248 for de = 1 to 1000: next de
 249 goto 21
 250 print "ENTER DESTINATION CODE"
-251 input co$: a$ = co$: gosub 900: co$ = a$
+251 input co$
 252 if left$(co$, 1) = "Y" then a = 1: goto 247
 253 if left$(co$, 1) = "B" then a = 31: goto 247
 254 if left$(co$, 1) = "C" then a = 41: goto 247
@@ -350,13 +350,13 @@
 351 if s > 79 then 362
 352 if s < 80 then print "THE YACHT BEGINS TO MOVE FORWARD, THEN SUDDENLY THE DRIVE "
 353 if s < 80 then print "OVERLOADS AND EXPLODES BLOWING YOU INTO COSMIC DUST"
-354 rem poke 36878, 15
+354 poke 36878, 15
 355 for x = 255 to 128 step - 1
-356 rem poke 36877, x
+356 poke 36877, x
 357 for de = 1 to 20: next de
-358 rem poke 36874, x
+358 poke 36874, x
 359 next x
-360 for x = 15 to 0 step - 1 : for y = 1 to 20: next y: next x: rem poke 36878, x
+360 for x = 15 to 0 step - 1 : for y = 1 to 20: next y: poke 36878, x: next x
 361 goto 372
 362 if s < 110 then print "THE HYPERDRIVE REFUSES TO ENGAGE, LEAVING YOU TO DRIFT IN SPACE."
 363 if s < 110 then print "PERHAPS SOMEONE WILL HEAR YOUR MAYDAY" : goto 372
@@ -370,15 +370,15 @@
 371 if s = 126 then print "CONGRATULATIONS!! YOU MADE IT."
 372 rem
 373 print "ANOTHER ADVENTURE?"
-374 input a$: gosub 900
+374 input a$
 375 if left$ (a$, 1) = "Y" then 3
 376 print "YES OR NO - THIS IS YOUR LAST CHANCE!!"
-377 input w$: a$ = w$: gosub 900: w$ = a$
+377 input w$
 378 if left$ (w$, 1) = "Y" then 3
 379 print " YOU HAVE BEEN PLAYING HYPERDRIVE FOR"
 380 print left$(ti$, 2); " HOURS " ;mid$(ti$, 3, 2); " MINUTES!!"
 381 for de = 1 to 5000: next de
-382 rem poke 36879, 8
+382 poke 36879, 8
 383 end
 384 rem
 385 restore
@@ -396,14 +396,14 @@
 397 next y
 398 next x
 399 return
-400 data DRONE, 'DROID, HUMANOID, MACHINE, DRONE, ROBOT, PUMP
-401 data COMPASS, BOMB, MEMORY, PROCESSOR, TAPE
-402 data BOOK, SERVO, TOOL KIT, CLOCK, BRACELET, MATCHES, SCREWDRIVER
-403 data BLASTER, MASK, ROPE, MAGNET, FUSE, NORTH
-404 data SOUTH
-405 data WEST, EAST, TRANSMAT, APE, LOOK, LIST, QUIT, TAKE
-406 data DROP, USE, USING, WITH, CUT, BREAK, UP
-407 data UNLOCK, OPEN, KILL, SHOOT, LIGHT, BURN, DOWN, JUMP, READ, GET, Z , Z , Z , Z , HELP
+400 data drone, 'droid, humanoid, machine, drone, robot, pump
+401 data compass, bomb, memory, processor, tape
+402 data book, servo, tool kit, clock, bracelet, matches, screwdriver
+403 data blaster, mask, rope, magnet, fuse, north
+404 data south
+405 data west, east, transmat, ape, look, list, quit, take
+406 data drop, use, using, with, cut, break, up
+407 data unlock, open, kill, shoot, light, burn, down, jump, read, get, z , z , z , z , help
 408 data 5, 36, 42, 16, 52, 25, 37, 1, 26, 50, 50, 33, 21, 41, 19, 9, 27, 2, 19, 7, 12, 40, 34, 17
 409 data 2, 0, 0, 0, 128, 0, 128, 3, 5, 6, 2, 4, 3, 0, 3, 8
 410 data 128, 4, 128, 9, 0, 0, 3, 7, 8, 0, 6, 0, 9, 7, 10, 9, 10, 8, 5, 128, 11
@@ -415,8 +415,8 @@
 416 data 0, 0, 39, 39, 46, 42, 41, 41, 41, 41, 43, 43, 41, 44, 42, 42, 45, 42, 46, 46, 46, 44, 46, 47
 417 data 41, 41, 42, 42, 0, 48, 45, 0, 47, 49, 45, 0, 50, 0, 0, 48, 49, 0, 0, 0, 0, 54, 14, 0, 29, 53, 0, 0
 418 data 0, 22, 0, 0, 51, 27, 0, 0
-419 rem poke 36879, 78
-420 rem poke 36869, 194
+419 poke 36879, 78
+420 poke 36869, 194
 421 print "."
 422 print "HYPERDRIVE"
 423 print "BY KEN STONE AND JOHN HARDY"
@@ -456,26 +456,26 @@
 457 print "YOUR SPACE YACHT HAS BEEN DAMAGED IN A FREAK SPACE ACCIDENT."
 458 print "YOU ARE FORCED TO DOCK WITH A DESERTED WRECK IN AN ATTEMPT TO FIND"
 459 print "THE EQUIPMENT NEEDED TO REPAIR YOUR YACHT."
-460 print "CONTINUE?" : input w$: a$ = w$: gosub 900: w$ = a$: print "."
+460 print "CONTINUE?" : input w$: print "."
 461 print "TO GET YOU STARTED HERE ARE SOME COMMANDS YOU MAY USE :-"
 462 print "NORTH LOOK LIST QUIT"
-463 print "CONTINUE?" : input w$: a$ = w$: gosub 900: w$ = a$
+463 print "CONTINUE?" : input w$
 464 return
 465 print "....................."
-466 print " EMERGENCY "
-467 print " COMPUTER SHUTDOWN "
-468 print " PROCEDURE "
-469 print ""
-470 print " TRANSMAT INTO "
-471 print " COMPUTER VAULT AND"
-472 print " REMOVE PROCESSOR "
-473 print " AND MEMORY CARDS. "
+466 print ". EMERGENCY ."
+467 print ". COMPUTER SHUTDOWN ."
+468 print ". PROCEDURE ."
+469 print ". ."
+470 print ". TRANSMAT INTO ."
+471 print ". COMPUTER VAULT AND."
+472 print ". REMOVE PROCESSOR ."
+473 print ". AND MEMORY CARDS. ."
 474 print "....................."
 475 return
 476 if echo = 1 then return
 477 print "YOU ARE STANDING IN AN ACOUSTICALLY SEALED ROOM." : print: print
 478 print "OK, WHAT NOW?"
-479 input echo$: a$ = echo$: gosub 900: echo$ = a$
+479 input echo$
 480 print: print
 481 print echo$
 482 print: print
@@ -486,34 +486,3 @@
 487 if p(13) = - 1 or p(13) = a then print "A LONG TIME AGO IN A GALAXY FAR, FAR AWAY.." : goto 21
 488 print "WHAT DO YOU WANT TO READ, THE BRAND NAME ON YOUR BOOTS, PERHAPS?"
 489 goto 136
-850 print "DBG A$=";a$
-851 for dq = 1 to len(a$)
-852 print asc(mid$(a$, dq, 1));
-853 next dq
-854 print
-855 return
-860 print "DBG N$=";n$
-861 for dq = 1 to len(n$)
-862 print asc(mid$(n$, dq, 1));
-863 next dq
-864 print
-865 return
-870 restore
-871 for dq = 1 to 31: read n$: next dq
-872 print "DBG LOOK N$=";n$
-873 for dq = 1 to len(n$)
-874 print asc(mid$(n$, dq, 1));
-875 next dq
-876 print
-877 restore
-878 return
-880 q = 1
-881 if q > len(n$) then return
-882 o = asc(mid$(n$, q, 1))
-883 if o > 192 and o < 219 then n$ = left$(n$, q - 1) + chr$(o - 128) + mid$(n$, q + 1)
-884 q = q + 1: goto 881
-900 q = 1
-901 if q > len(a$) then return
-902 o = asc(mid$(a$, q, 1))
-903 if o > 96 and o < 123 then mid$(a$, q, 1) = chr$(o - 32)
-904 q = q + 1: goto 901
