@@ -1,0 +1,18 @@
+{
+  "artifactSha256": "a3db132195631da3cd80885d9072b7b7cf1bb96118fc24363be71b93c7be3870",
+  "hostRevision": "26ad80f932657799fc18a4c2ade7063032c2444d",
+  "hostDirty": false,
+  "hostArtifacts": {
+    "triptych_host_wasm.js": "8498adb9db0202040dbd19cc9fedde81fb40b5c323775f6083ea6e8cf125ef89",
+    "triptych_host_wasm_bg.wasm": "9da1a8f4d5ca2b897f414153b23f69d1918d757d1955a196e90186f615e34f73"
+  },
+  "status": "passed",
+  "commands": 93,
+  "score": 126,
+  "checks": [
+    "actual CP/M full route",
+    "state after every command",
+    "save completed game",
+    "quit to CCP"
+  ]
+}

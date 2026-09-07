@@ -1,0 +1,31 @@
+import {mkdir,readFile,writeFile,readdir} from 'node:fs/promises';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import {fileURLToPath} from 'node:url';
+import {assembleAtomProject,materializeAtomGeneration,renderAtomArtifacts} from 'atom-z80';
+const root=fileURLToPath(new URL('../cpm/',import.meta.url));
+const sourceFiles={};
+for(const file of (await readdir(root)).sort()){
+ if(!file.endsWith('.asm'))continue;
+ assert(/^[a-z0-9_]{1,8}\.asm$/i.test(file),`${file}: CP/M 8.3 name required`);
+ const source=await readFile(new URL('../cpm/'+file,import.meta.url),'utf8');
+ assert(source.trimEnd().split('\n').length<=500,`${file}: split at 500 lines`);
+ sourceFiles['cpm/'+file]=createHash('sha256').update(source).digest('hex');
+}
+const result=await assembleAtomProject({root,entry:'main.asm',target:{start:0x100,capacity:0xdd00},maxInstructions:100_000_000,maxCycles:1_000_000_000}).catch(error=>{console.error(error.message,error.diagnostic,error.native);process.exit(1);});
+const bytes=materializeAtomGeneration(result.generation,{base:0x100}).bytes;
+const artifacts=renderAtomArtifacts(result,{base:0x100,entryAddress:0x100});
+const symbols=Object.fromEntries(artifacts.d8.symbols.map(s=>[s.name.toUpperCase(),s.address??s.value]));
+assert.equal(symbols.STATEEND-symbols.STATE,251,'reset extent');
+const memory={start:256,endExclusive:symbols.PROEND,allocatedBytes:symbols.PROEND-256,stackStart:symbols.STABOT,stackEndExclusive:symbols.STACKTOP,stackBytes:symbols.STACKTOP-symbols.STABOT,dynamicAllocationBytes:0};
+assert.equal(memory.endExclusive,256+bytes.length);
+assert.equal(memory.stackBytes,512);
+assert.equal(memory.stackEndExclusive,memory.endExclusive);
+assert(memory.endExclusive<=0xde00);
+const out=new URL('../build/',import.meta.url);await mkdir(out,{recursive:true});
+await writeFile(new URL('HYPERDRV.COM',out),bytes);
+await writeFile(new URL('symbols.json',out),JSON.stringify(symbols,null,2)+'\n');
+await writeFile(new URL('HYPERDRV.d8.json',out),JSON.stringify(artifacts.d8,null,2)+'\n');
+const manifest={format:'hyperdrive-build-v1',artifact:'HYPERDRV.COM',version:'0.1.0',loadAddress:256,entryAddress:256,bytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex'),assembler:{name:'atom-z80',revision:'802b5c2d320bec777f427755ff2d7338e3b80a05'},sourceFormat:'native-atom',memory,sourceSha256:createHash('sha256').update(JSON.stringify(sourceFiles)).digest('hex'),sourceFiles};
+await writeFile(new URL('manifest.json',out),JSON.stringify(manifest,null,2)+'\n');
+console.log(`${manifest.artifact}: ${bytes.length} bytes; private stack ${memory.stackBytes}; end ${memory.endExclusive.toString(16)}`);
