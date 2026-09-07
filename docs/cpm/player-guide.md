@@ -1,6 +1,8 @@
 # Playing Hyperdrive
 
-Run `HYPERDRV` at the CP/M prompt. Your yacht has been damaged, and you have
+[Open the Triptych terminal](https://jhlagado.github.io/triptych/) and run
+`HYPERDRV` at the CP/M prompt. On a previously saved disk, install HYPERDRV.COM
+through Files and recovery first. Your yacht has been damaged, and you have
 docked with a derelict cruiser to find equipment for repairs. Return useful
 salvage to the yacht, then use FINISH to attempt the journey home.
 

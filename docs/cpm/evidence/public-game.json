@@ -1,0 +1,417 @@
+{
+  "status": "passed",
+  "url": "https://jhlagado.github.io/triptych/",
+  "observedAt": "2026-09-07T19:02:10.890Z",
+  "version": "0.1.0",
+  "comSha256": "a3db132195631da3cd80885d9072b7b7cf1bb96118fc24363be71b93c7be3870",
+  "distribution": {
+    "revision": "5582a20c8bd15da18dbdf2ed7d2167ec290257e7",
+    "lockSha256": "619839a95e1e7d8fa7bc44cb3405bb4af2469fc8e97f529bae428e7d16e4da62",
+    "diskSha256": "d628f79307f4354a6a7a52b2e4fba69218c5feccfe62205b6f3d476355b07805"
+  },
+  "browserVersion": "151.0.7922.34",
+  "host": {
+    "platform": "darwin",
+    "release": "25.5.0",
+    "arch": "arm64",
+    "cpu": "Apple M2"
+  },
+  "commands": 93,
+  "score": 126,
+  "pages": 1,
+  "auxiliaryTimings": {
+    "help": {
+      "command": "HELP",
+      "elapsedMs": 34.66062500000044
+    },
+    "save": {
+      "command": "SAVE WEBWIN",
+      "elapsedMs": 18.310583999998926
+    },
+    "load": {
+      "command": "LOAD WEBWIN",
+      "elapsedMs": 18.005207999998674
+    }
+  },
+  "reload": true,
+  "reimportFreshContext": true,
+  "continuedAfterImport": true,
+  "diskSha256": "5705663c73318ef2285503342899a1f56961a1144e3ffbad9c18e05351622a27",
+  "method": "Enter dispatch to complete observed prompt, including Playwright observation overhead. Human typing/page pauses excluded from ordinary-command samples.",
+  "p95Ms": 18.05608299999949,
+  "maxMs": 21.96758300000056,
+  "samples": [
+    {
+      "command": "TAKE COMPASS",
+      "elapsedMs": 17.863500000000386
+    },
+    {
+      "command": "N",
+      "elapsedMs": 18.05608299999949
+    },
+    {
+      "command": "TAKE MATCHES",
+      "elapsedMs": 17.936791999999514
+    },
+    {
+      "command": "E",
+      "elapsedMs": 17.400000000000546
+    },
+    {
+      "command": "S",
+      "elapsedMs": 18.633333000000675
+    },
+    {
+      "command": "E",
+      "elapsedMs": 17.869166999999834
+    },
+    {
+      "command": "TAKE BLASTER",
+      "elapsedMs": 17.61962500000027
+    },
+    {
+      "command": "N",
+      "elapsedMs": 17.742874999999913
+    },
+    {
+      "command": "N",
+      "elapsedMs": 17.391583000000537
+    },
+    {
+      "command": "TAKE CLOCK",
+      "elapsedMs": 17.651458999999704
+    },
+    {
+      "command": "N",
+      "elapsedMs": 17.44312499999978
+    },
+    {
+      "command": "N",
+      "elapsedMs": 17.99474999999984
+    },
+    {
+      "command": "N",
+      "elapsedMs": 19.299707999999555
+    },
+    {
+      "command": "TAKE MASK",
+      "elapsedMs": 17.62316699999974
+    },
+    {
+      "command": "S",
+      "elapsedMs": 17.80449999999928
+    },
+    {
+      "command": "USE BLASTER",
+      "elapsedMs": 17.160541999999623
+    },
+    {
+      "command": "N",
+      "elapsedMs": 17.54962499999965
+    },
+    {
+      "command": "TAKE PUMP",
+      "elapsedMs": 17.39099999999962
+    },
+    {
+      "command": "N",
+      "elapsedMs": 17.44616700000006
+    },
+    {
+      "command": "E",
+      "elapsedMs": 17.439666999999645
+    },
+    {
+      "command": "E",
+      "elapsedMs": 17.509500000000116
+    },
+    {
+      "command": "USE BLASTER",
+      "elapsedMs": 17.75983300000007
+    },
+    {
+      "command": "W",
+      "elapsedMs": 17.58729200000016
+    },
+    {
+      "command": "W",
+      "elapsedMs": 17.548125000000255
+    },
+    {
+      "command": "N",
+      "elapsedMs": 17.393999999999323
+    },
+    {
+      "command": "S",
+      "elapsedMs": 16.491791999999805
+    },
+    {
+      "command": "S",
+      "elapsedMs": 17.312082999999802
+    },
+    {
+      "command": "W",
+      "elapsedMs": 17.52166599999964
+    },
+    {
+      "command": "TAKE ROPE",
+      "elapsedMs": 17.657916999999543
+    },
+    {
+      "command": "E",
+      "elapsedMs": 17.522500000000036
+    },
+    {
+      "command": "N",
+      "elapsedMs": 17.761084000000665
+    },
+    {
+      "command": "N",
+      "elapsedMs": 17.231917000000067
+    },
+    {
+      "command": "E",
+      "elapsedMs": 17.469042000000627
+    },
+    {
+      "command": "E",
+      "elapsedMs": 17.422333000000435
+    },
+    {
+      "command": "N",
+      "elapsedMs": 17.46295800000007
+    },
+    {
+      "command": "USE ROPE",
+      "elapsedMs": 17.698999999999614
+    },
+    {
+      "command": "TAKE BRACELET",
+      "elapsedMs": 17.43462499999987
+    },
+    {
+      "command": "TRANSMAT",
+      "elapsedMs": 17.48883399999977
+    },
+    {
+      "command": "USE BLASTER",
+      "elapsedMs": 17.202041000000463
+    },
+    {
+      "command": "TRANSMAT Y",
+      "elapsedMs": 17.514541999999892
+    },
+    {
+      "command": "DROP PUMP",
+      "elapsedMs": 17.375833000000057
+    },
+    {
+      "command": "DROP CLOCK",
+      "elapsedMs": 17.391208000000006
+    },
+    {
+      "command": "TRANSMAT",
+      "elapsedMs": 17.65583400000014
+    },
+    {
+      "command": "N",
+      "elapsedMs": 17.558874999999716
+    },
+    {
+      "command": "TAKE BOMB",
+      "elapsedMs": 16.525542000000314
+    },
+    {
+      "command": "USE MATCHES",
+      "elapsedMs": 17.358624999999847
+    },
+    {
+      "command": "W",
+      "elapsedMs": 17.37354200000027
+    },
+    {
+      "command": "W",
+      "elapsedMs": 17.41529199999968
+    },
+    {
+      "command": "W",
+      "elapsedMs": 17.590291000000434
+    },
+    {
+      "command": "W",
+      "elapsedMs": 21.96758300000056
+    },
+    {
+      "command": "S",
+      "elapsedMs": 17.113208999999188
+    },
+    {
+      "command": "TAKE BOOK",
+      "elapsedMs": 17.297458000000006
+    },
+    {
+      "command": "W",
+      "elapsedMs": 17.71404199999961
+    },
+    {
+      "command": "N",
+      "elapsedMs": 17.403834000000643
+    },
+    {
+      "command": "W",
+      "elapsedMs": 17.331249999999272
+    },
+    {
+      "command": "TAKE TOOLKIT",
+      "elapsedMs": 17.46650000000045
+    },
+    {
+      "command": "TAKE SCREWDRIVER",
+      "elapsedMs": 17.522750000000087
+    },
+    {
+      "command": "TRANSMAT",
+      "elapsedMs": 17.334917000000132
+    },
+    {
+      "command": "TRANSMAT Y",
+      "elapsedMs": 17.488124999999854
+    },
+    {
+      "command": "DROP BOOK",
+      "elapsedMs": 17.484542000000147
+    },
+    {
+      "command": "DROP TOOLKIT",
+      "elapsedMs": 17.347917000000052
+    },
+    {
+      "command": "DROP SCREWDRIVER",
+      "elapsedMs": 17.228916000000027
+    },
+    {
+      "command": "TRANSMAT",
+      "elapsedMs": 17.396458999999595
+    },
+    {
+      "command": "TRANSMAT B",
+      "elapsedMs": 17.578625000000102
+    },
+    {
+      "command": "E",
+      "elapsedMs": 17.281667000000198
+    },
+    {
+      "command": "S",
+      "elapsedMs": 17.336082999999235
+    },
+    {
+      "command": "TAKE TAPE",
+      "elapsedMs": 17.3550409999998
+    },
+    {
+      "command": "TRANSMAT",
+      "elapsedMs": 17.539874999999483
+    },
+    {
+      "command": "TRANSMAT Y",
+      "elapsedMs": 17.606292000000394
+    },
+    {
+      "command": "DROP TAPE",
+      "elapsedMs": 17.359040999999706
+    },
+    {
+      "command": "TRANSMAT",
+      "elapsedMs": 17.476292000000285
+    },
+    {
+      "command": "TRANSMAT C",
+      "elapsedMs": 17.40379099999973
+    },
+    {
+      "command": "TAKE SERVO",
+      "elapsedMs": 17.677042000000256
+    },
+    {
+      "command": "S",
+      "elapsedMs": 17.52995800000099
+    },
+    {
+      "command": "USE BLASTER",
+      "elapsedMs": 17.280209000000468
+    },
+    {
+      "command": "USE BLASTER",
+      "elapsedMs": 17.633292000000438
+    },
+    {
+      "command": "W",
+      "elapsedMs": 17.393041999999696
+    },
+    {
+      "command": "S",
+      "elapsedMs": 17.503083000001425
+    },
+    {
+      "command": "N",
+      "elapsedMs": 17.41820800000096
+    },
+    {
+      "command": "E",
+      "elapsedMs": 17.368499999998676
+    },
+    {
+      "command": "ECHO",
+      "elapsedMs": 17.45783400000073
+    },
+    {
+      "command": "S",
+      "elapsedMs": 17.669541999999637
+    },
+    {
+      "command": "S",
+      "elapsedMs": 17.775541999999405
+    },
+    {
+      "command": "N",
+      "elapsedMs": 17.514415999999983
+    },
+    {
+      "command": "TAKE PROCESSOR",
+      "elapsedMs": 16.851542000000336
+    },
+    {
+      "command": "TAKE MEMORY",
+      "elapsedMs": 17.444250000000466
+    },
+    {
+      "command": "TRANSMAT",
+      "elapsedMs": 17.37212499999987
+    },
+    {
+      "command": "TRANSMAT Y",
+      "elapsedMs": 17.429375000001528
+    },
+    {
+      "command": "DROP SERVO",
+      "elapsedMs": 17.496541000000434
+    },
+    {
+      "command": "DROP PROCESSOR",
+      "elapsedMs": 17.524374999999054
+    },
+    {
+      "command": "DROP MEMORY",
+      "elapsedMs": 18.34991700000137
+    },
+    {
+      "command": "DROP BRACELET",
+      "elapsedMs": 17.30266699999993
+    },
+    {
+      "command": "DROP COMPASS",
+      "elapsedMs": 17.41216599999825
+    }
+  ]
+}
