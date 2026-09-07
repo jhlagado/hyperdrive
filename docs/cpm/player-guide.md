@@ -11,8 +11,9 @@ USE operates equipment, READ examines instructions, and TRANSMAT operates the
 transporter. SCORE reports your salvage value. Depositing equipment in your
 yacht earns twice its carried value.
 
-Hostile machines require a quick response. Repeated blaster fire becomes more
-dangerous as the adventure continues. Written instructions and room descriptions
+A hostile machine may attack when you attempt another action before using the
+blaster. There is no elapsed-time deadline: you can read, use HELP or save first.
+Repeated blaster fire becomes more dangerous as the adventure continues. Written instructions and room descriptions
 contain clues. HELP remains available while you solve a puzzle. Long help text
 pauses for Space or Enter; Q skips the remaining passage.
 

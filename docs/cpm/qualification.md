@@ -42,14 +42,20 @@ port decisions. This implementation makes these bounded changes:
 - A bounded, case-insensitive parser replaces substring matching and invalid
   array access. Inventory aliases are accepted. DOWN means south.
 - Utility commands do not consume action turns or mutate puzzle exits. Successful
-  moves and equipment actions use one consistent turn counter. Atmospheric
+  moves and equipment actions use one consistent turn counter; attempted blaster
+  use also counts when no enemy is present. Atmospheric
   warnings remain nonfatal, as in the recovered BASIC; no new oxygen death or
-  real-time browser-dependent countdown is introduced.
+  real-time browser-dependent countdown is introduced. The port removes the
+  original suppression of room descriptions and the 230-count mask depletion.
+  Fumes and low oxygen produce warnings while descriptions remain available.
 - ECHO uses the normal command loop, so help, inventory and saves remain usable.
   Repeated room descriptions in the computer vault still trigger the original
   sonic hazard. LOAD does not describe the room.
 - READ at the transmat or with the bracelet supplies destination codes. The
   original transporter destinations and bracelet restriction are retained.
+- The escape pod retains its original inconsistent reference to a secret code.
+  Its actual mechanism still requires removing and replacing the fuse; the
+  audit identifies this source quirk separately from implemented repairs.
 - Enemy relocations outside the 54-room table remove that enemy safely. A
   successful shot leaves a ground blaster on the floor when the inventory is
   full. The [combat report](combat.md) records byte-level probability rounding.

@@ -13,6 +13,8 @@
     "actual CP/M full route",
     "state after every command",
     "save completed game",
-    "quit to CCP"
+    "quit to CCP",
+    "relaunch and load saved state",
+    "finish126 after loading"
   ]
 }

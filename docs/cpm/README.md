@@ -8,4 +8,4 @@ of Ken Stone's original Hyperdrive and its acceptance requirements. The
 **Spoilers:** implementation rules, route transcripts, audit reports and tests
 in this directory or the test suite reveal puzzles, hidden destinations and
 endings. They are retained for development and verification. Players can use
-the eventual in-game HELP instead.
+the in-game HELP instead.

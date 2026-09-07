@@ -39,7 +39,7 @@ try {
  command('N','A>');
  const saved=cpu.export_drive(0);
  await writeFile(new URL('../build/cpm-completed.img',import.meta.url),saved);
- const report={artifactSha256:createHash('sha256').update(game).digest('hex'),hostRevision,hostDirty,hostArtifacts,status:'passed',commands:proof.checkpoints.length,score:126,checks:['actual CP/M full route','state after every command','save completed game','quit to CCP']};
+ const report={artifactSha256:createHash('sha256').update(game).digest('hex'),hostRevision,hostDirty,hostArtifacts,status:'passed',commands:proof.checkpoints.length,score:126,checks:['actual CP/M full route','state after every command','save completed game','quit to CCP','relaunch and load saved state','finish126 after loading']};
  await writeFile(new URL('../build/cpm-proof.json',import.meta.url),JSON.stringify(report,null,2)+'\n');
  console.log(JSON.stringify(report,null,2));
 }finally{cpu.free();}
