@@ -1,7 +1,7 @@
 # Hyperdrive for CP/M
 
-Status: native implementation and real CP/M route qualified; public browser
-deployment remains in progress. See [qualification](qualification.md).
+Status: all three milestones are complete. The game is deployed and verified
+on the public Triptych terminal. See [delivery acceptance](delivery.md).
 
 This port implements Ken Stone's original VIC-20 Hyperdrive. The recovered
 listing credits Ken Stone and John Hardy and records copyright Micro Parts,

@@ -1,10 +1,11 @@
 # Hyperdrive: The Lost 1982 Text Adventure
 
-A native ATOM CP/M port is being qualified for the Triptych WebAssembly
-terminal. Its executable is `HYPERDRV.COM`; the [player guide](docs/cpm/player-guide.md)
-and [technical documentation](docs/cpm/README.md) describe the port. Technical
-reports and tests contain spoilers. The historical recovery material below is
-preserved.
+[Play Hyperdrive in the Triptych CP/M terminal](https://jhlagado.github.io/triptych/).
+Type `HYPERDRV` at `A>`. On a previously saved disk, install `HYPERDRV.COM`
+through Files and recovery first. The [player guide](docs/cpm/player-guide.md)
+explains commands and disk saves. [Technical documentation](docs/cpm/README.md)
+includes the build, rules and verified delivery; reports and tests contain spoilers.
+The historical recovery material below is preserved.
 
 ## A Lost Game, Recovered
 

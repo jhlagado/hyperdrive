@@ -30,9 +30,20 @@ confirmation overflow, echo gating, sonic exposure, exact world tables, all
 failed writes and interrupted rename recovery. Combat checks exhaust byte-wide
 hit and fatal thresholds and verify register and stack preservation.
 
-Public website deployment, browser persistence and installation onto existing
-saved media remain release gates. A successful headless WASM test does not
-establish those browser results.
+The [public browser proof](evidence/public-game.json) passed on the deployed
+Triptych revision `5582a20c8bd15da18dbdf2ed7d2167ec290257e7`: full victory,
+save/reload, export and fresh-context import. The [installation proof](evidence/public-install.json)
+retained every existing Caverns-disk file, its system tracks and an exact disk
+backup. [Asset verification](evidence/public-assets.json) matches the released
+COM and complete distribution image. Observed public-browser command latency
+was about 18 ms at the 95th percentile and 22 ms maximum on the recorded Apple M2
+and Chromium host; these are browser observations, separate from guest cycles.
+
+The maintained owner suite now contains 33 tests, including optional puzzle
+branches and all ending thresholds. Triptych's complete check passed 469 tests,
+91 browser tests and its native, WASM, CP/M and Rust gates. The
+[Pages release](https://github.com/jhlagado/triptych/actions/runs/34152578646)
+passed before the live-site proof.
 
 ## Deliberate adaptations
 

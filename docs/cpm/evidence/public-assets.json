@@ -1,0 +1,36 @@
+{
+  "status": "passed",
+  "url": "https://jhlagado.github.io/triptych/",
+  "observedAt": "2026-09-07T19:02:03.000Z",
+  "version": "0.1.0",
+  "distribution": {
+    "revision": "5582a20c8bd15da18dbdf2ed7d2167ec290257e7",
+    "lockSha256": "619839a95e1e7d8fa7bc44cb3405bb4af2469fc8e97f529bae428e7d16e4da62",
+    "diskSha256": "d628f79307f4354a6a7a52b2e4fba69218c5feccfe62205b6f3d476355b07805"
+  },
+  "game": {
+    "id": "hyperdrive",
+    "name": "HYPERDRV.COM",
+    "source": {
+      "kind": "git",
+      "repository": "https://github.com/jhlagado/hyperdrive.git",
+      "revision": "624fd56518a80762821c5bfcc3355e9a76d1eb34",
+      "path": "cpm/main.asm"
+    },
+    "target": {
+      "origin": 256,
+      "capacity": 58112
+    },
+    "raw": {
+      "bytes": 15152,
+      "sha256": "a3db132195631da3cd80885d9072b7b7cf1bb96118fc24363be71b93c7be3870"
+    },
+    "padded": {
+      "bytes": 15232,
+      "sha256": "88c160b0fa08e09ca5eb4bea97a8ffc1c50b66ede017f76fdfcc6ca7fd86f4d0"
+    },
+    "padByte": 26,
+    "asset": "tool-hyperdrive-88c160b0fa08e09ca5eb4bea97a8ffc1c50b66ede017f76fdfcc6ca7fd86f4d0.com"
+  },
+  "diskSha256": "d628f79307f4354a6a7a52b2e4fba69218c5feccfe62205b6f3d476355b07805"
+}

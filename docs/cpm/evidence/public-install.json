@@ -1,0 +1,33 @@
+{
+  "status": "passed",
+  "url": "https://jhlagado.github.io/triptych/",
+  "observedAt": "2026-09-07T19:02:12.058Z",
+  "comSha256": "a3db132195631da3cd80885d9072b7b7cf1bb96118fc24363be71b93c7be3870",
+  "reopenedByteExact": true,
+  "absentBeforeExplicitInstall": true,
+  "oldDiskSha256": "9de2c09175c57a0c938c700743a1c1635ccab8942c0c49aaa374e4c3d714c967",
+  "updatedDiskSha256": "2f2a0ca57f02519578e6a0ebfef553fe93e2857657a3d7133aeee003cbbbca87",
+  "preservedFiles": [
+    "ATOM.COM",
+    "NUC.COM",
+    "EDIT.COM",
+    "CAVERNS.COM",
+    "HELLO.ASM",
+    "INPUT.NU",
+    "LARGE.ASM",
+    "WEBWIN.SAV"
+  ],
+  "systemTracksPreserved": true,
+  "newGamePlayable": true,
+  "precedingDiskBackupExact": true,
+  "backups": [
+    {
+      "id": "v3:14f7fe14-96c9-4a16-b0f2-c3edb219f8f5",
+      "sha256": "d628f79307f4354a6a7a52b2e4fba69218c5feccfe62205b6f3d476355b07805"
+    },
+    {
+      "id": "v3:681a20d9-bd94-4656-b68a-85d62c1569d1",
+      "sha256": "9de2c09175c57a0c938c700743a1c1635ccab8942c0c49aaa374e4c3d714c967"
+    }
+  ]
+}
